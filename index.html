@@ -538,7 +538,7 @@
 
         /* Why Choose Us */
         .why-us {
-            padding: 8rem 8%;
+            padding: 5rem 8%;
             background: linear-gradient(135deg, var(--forest-green) 0%, #1e3329 100%);
             color: white;
             position: relative;
@@ -614,80 +614,117 @@
         /* About Ron Section */
         .about-ron {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            margin-top: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
             position: relative;
             z-index: 1;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .ron-story {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ron-intro {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ron-avatar {
-            width: 72px;
-            height: 72px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, var(--golden-amber), var(--copper));
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
+            font-size: 2rem;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .ron-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .ron-title h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         .ron-title p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.8;
             margin: 0;
         }
 
         .ron-bio {
-            font-size: 0.95rem;
-            line-height: 1.8;
+            font-size: 0.9rem;
+            line-height: 1.7;
             opacity: 0.9;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .ron-personal {
-            font-size: 0.9rem;
-            line-height: 1.7;
+            font-size: 0.85rem;
+            line-height: 1.6;
             opacity: 0.8;
             font-style: italic;
             padding-left: 1rem;
             border-left: 2px solid var(--golden-amber);
         }
 
+        .ron-blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            color: var(--golden-amber);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .ron-blog-link:hover {
+            color: white;
+            gap: 0.75rem;
+        }
+
+        .ron-blog-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .ron-blog-link:hover svg {
+            transform: translateX(3px);
+        }
+
         .credentials-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .credential-card {
             background: rgba(255, 255, 255, 0.06);
             border-radius: 6px;
-            padding: 1.25rem;
+            padding: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.2s ease;
         }
@@ -698,52 +735,28 @@
         }
 
         .credential-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .credential-card h4 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.25rem;
         }
 
         .credential-card p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.75;
-            line-height: 1.5;
+            line-height: 1.4;
             margin: 0;
-        }
-
-        .rating-highlight {
-            grid-column: span 2;
-            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 1.5rem;
-        }
-
-        .rating-highlight .stars {
-            font-size: 1.25rem;
-            letter-spacing: 2px;
-        }
-
-        .rating-highlight .rating-text {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .rating-highlight .rating-text span {
-            opacity: 0.9;
-            font-weight: 400;
         }
 
         @media (max-width: 1024px) {
             .about-ron {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .credentials-grid {
@@ -754,12 +767,6 @@
         @media (max-width: 600px) {
             .credentials-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .rating-highlight {
-                grid-column: span 1;
-                flex-direction: column;
-                text-align: center;
             }
         }
 
@@ -1673,13 +1680,16 @@
                 </div>
                 <p class="ron-bio">With over 30 years of comprehensive construction experience across New England, Ron has built everything from custom homes to commercial renovations. Now he's focused on helping Massachusetts homeowners take advantage of the new ADU law — bringing the same quality craftsmanship and attention to detail that's earned him a reputation as one of the region's most trusted builders.</p>
                 <p class="ron-personal">"I'm a family man who's raised my kids right here in Massachusetts. I treat every project like I'm building for my own family — because your home deserves nothing less. When you call, you get me directly. No runaround, no sales pitch."</p>
+                <a href="blog.html" class="ron-blog-link">
+                    Read Ron's Blog
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
             </div>
 
             <div class="credentials-grid">
-                <div class="credential-card rating-highlight">
-                    <div class="stars">★★★★★</div>
-                    <div class="rating-text">5.0 Perfect Rating <span>— Read what our clients say</span></div>
-                </div>
                 <div class="credential-card">
                     <div class="credential-icon">🏛️</div>
                     <h4>MA Licensed Contractor</h4>
