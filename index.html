@@ -664,31 +664,48 @@
             border-left: 2px solid var(--golden-amber);
         }
 
-        .ron-blog-link {
+        .blog-callout {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-callout p {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .blog-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            margin-top: 1.25rem;
-            color: var(--golden-amber);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.1rem;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
             transition: all 0.2s ease;
         }
 
-        .ron-blog-link:hover {
-            color: white;
-            gap: 0.75rem;
+        .blog-btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
 
-        .ron-blog-link svg {
-            width: 16px;
-            height: 16px;
+        .blog-btn svg {
+            width: 14px;
+            height: 14px;
             transition: transform 0.2s ease;
         }
 
-        .ron-blog-link:hover svg {
-            transform: translateX(3px);
+        .blog-btn:hover svg {
+            transform: translateX(2px);
         }
 
         .credentials-grid {
@@ -1649,13 +1666,16 @@
                 </div>
                 <p class="ron-bio">With over 30 years of comprehensive construction experience across New England, Ron has built everything from custom homes to commercial renovations. Now he's focused on helping Massachusetts homeowners take advantage of the new ADU law — bringing the same quality craftsmanship and attention to detail that's earned him a reputation as one of the region's most trusted builders.</p>
                 <p class="ron-personal">"I'm a family man who's raised my kids right here in Massachusetts. I treat every project like I'm building for my own family — because your home deserves nothing less. When you call, you get me directly. No runaround, no sales pitch."</p>
-                <a href="blog.html" class="ron-blog-link">
-                    Read Ron's Blog
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </a>
+                <div class="blog-callout">
+                    <p>Insights backed by 30+ years of professional experience</p>
+                    <a href="blog.html" class="blog-btn">
+                        ADUBuilder Blog
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <div class="credentials-grid">
