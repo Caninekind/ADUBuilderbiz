@@ -53,22 +53,27 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(250, 247, 242, 0.98), rgba(250, 247, 242, 0.9));
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(139, 108, 92, 0.1);
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 108, 92, 0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--forest-green);
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.15em;
         }
 
         .logo span {
@@ -77,7 +82,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
 
@@ -85,30 +90,69 @@
             text-decoration: none;
             color: var(--deep-charcoal);
             font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+            transition: color 0.2s ease;
+            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a:not(.nav-cta):not(.nav-phone):hover {
             color: var(--autumn-rust);
+        }
+
+        .nav-links a:not(.nav-cta):not(.nav-phone)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--autumn-rust);
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:not(.nav-cta):not(.nav-phone):hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--autumn-rust);
+            color: white !important;
+            padding: 0.7rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.01em;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(181, 80, 60, 0.25);
+        }
+
+        .nav-cta:hover {
+            background: #9a432f;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(181, 80, 60, 0.35);
         }
 
         .nav-phone {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--forest-green);
-            color: white !important;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            gap: 0.4rem;
+            color: var(--forest-green) !important;
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            border: 1.5px solid var(--forest-green);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
         }
 
         .nav-phone:hover {
-            background: var(--autumn-rust);
+            background: var(--forest-green);
             color: white !important;
-            transform: translateY(-2px);
+        }
+
+        .nav-phone::after {
+            display: none !important;
         }
 
         /* Hero Section */
@@ -130,17 +174,16 @@
         .savings-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
             background: linear-gradient(135deg, var(--golden-amber), var(--copper));
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 0.03em;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
-            animation: pulse 2s infinite;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(212, 168, 83, 0.25);
         }
 
         @keyframes pulse {
@@ -192,7 +235,7 @@
             background: linear-gradient(135deg, var(--forest-green), #1e3329);
             color: white;
             padding: 1.5rem 2rem;
-            border-radius: 16px;
+            border-radius: 8px;
             margin-bottom: 2.5rem;
             position: relative;
             overflow: hidden;
@@ -241,38 +284,39 @@
         .btn-primary {
             background: var(--autumn-rust);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            padding: 0.9rem 1.75rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 2px 8px rgba(181, 80, 60, 0.2);
         }
 
         .btn-primary:hover {
             background: #9a432f;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(181, 80, 60, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(181, 80, 60, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--forest-green);
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            padding: 0.9rem 1.75rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            border: 2px solid var(--forest-green);
-            transition: all 0.3s ease;
+            border: 1.5px solid var(--forest-green);
+            transition: all 0.2s ease;
         }
 
         .btn-secondary:hover {
@@ -329,8 +373,8 @@
             position: absolute;
             background: white;
             padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
             z-index: 10;
         }
 
@@ -408,15 +452,15 @@
 
         .service-card {
             background: var(--warm-cream);
-            border-radius: 20px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             border: 1px solid rgba(139, 108, 92, 0.1);
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
         }
 
         .service-image {
@@ -569,117 +613,136 @@
 
         /* MA Law Section */
         .ma-law {
-            padding: 8rem 8%;
-            background: var(--warm-cream);
+            padding: 5rem 8%;
+            background: linear-gradient(135deg, var(--forest-green) 0%, #1a2f26 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ma-law::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20h20v20H20zM0 0h20v20H0z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
         }
 
         .law-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .law-text {
+            color: white;
+        }
+
+        .law-text .section-tag {
+            color: var(--golden-amber);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
         }
 
         .law-text h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
             font-weight: 700;
-            color: var(--deep-charcoal);
-            margin-bottom: 1.5rem;
+            color: white;
+            margin-bottom: 1.25rem;
             letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .law-text p {
-            color: var(--warm-wood);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .law-text p:last-of-type {
+            margin-bottom: 0;
         }
 
         .savings-breakdown {
             background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            padding: 1.75rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
         }
 
         .savings-breakdown h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--deep-charcoal);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .savings-breakdown h3 svg {
+            width: 18px;
+            height: 18px;
+            color: var(--forest-green);
         }
 
         .savings-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--warm-beige);
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(139, 108, 92, 0.1);
         }
 
         .savings-item:last-child {
             border-bottom: none;
-            padding-top: 1.5rem;
+            padding-top: 0.9rem;
             margin-top: 0.5rem;
             border-top: 2px solid var(--forest-green);
         }
 
         .savings-item .label {
             color: var(--warm-wood);
+            font-size: 0.9rem;
         }
 
         .savings-item .amount {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .savings-item .amount.negative {
             color: var(--autumn-rust);
             text-decoration: line-through;
+            opacity: 0.7;
         }
 
         .savings-item .amount.total {
             color: var(--forest-green);
-            font-size: 1.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .savings-item:last-child .label {
+            font-weight: 600;
+            color: var(--deep-charcoal);
         }
 
         .law-visual {
             position: relative;
-        }
-
-        .state-seal {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            display: block;
-        }
-
-        .law-badge {
-            position: absolute;
-            background: var(--autumn-rust);
-            color: white;
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            bottom: 10%;
-            right: 0;
-            box-shadow: 0 10px 30px rgba(181, 80, 60, 0.3);
-        }
-
-        .law-badge h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .law-badge p {
-            font-size: 0.85rem;
-            opacity: 0.9;
         }
 
         /* Process Section */
@@ -847,14 +910,15 @@
         .testimonial-card {
             background: white;
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             border: 1px solid #e8eaed;
             transition: all 0.2s ease;
         }
 
         .testimonial-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border-color: rgba(139, 108, 92, 0.15);
         }
 
         .review-header {
@@ -1012,10 +1076,10 @@
 
         .newsletter-form input[type="email"] {
             flex: 1;
-            padding: 1rem 1.5rem;
+            padding: 0.9rem 1.25rem;
             border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
             font-family: 'Outfit', sans-serif;
             outline: none;
         }
@@ -1027,20 +1091,20 @@
         .newsletter-form button {
             background: var(--autumn-rust);
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.5rem;
             border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
             font-weight: 600;
             font-family: 'Outfit', sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             white-space: nowrap;
         }
 
         .newsletter-form button:hover {
             background: #9a432f;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .newsletter-privacy {
@@ -1274,11 +1338,12 @@
             <a href="#about">About</a>
             <a href="#testimonials">Testimonials</a>
             <a href="tel:508-840-5994" class="nav-phone">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
                 508-840-5994
             </a>
+            <a href="tel:508-840-5994" class="nav-cta">Book Free Consultation</a>
         </div>
     </nav>
 
@@ -1336,6 +1401,50 @@
                 <div class="floating-stat bottom-left">
                     <div class="number">$40K+</div>
                     <div class="label">Permit Savings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MA Law Section -->
+    <section class="ma-law" id="ma-law">
+        <div class="law-content">
+            <div class="law-text">
+                <span class="section-tag">2025 Massachusetts ADU Law</span>
+                <h2>The Best Time to Build an ADU in Massachusetts History</h2>
+                <p>Massachusetts' landmark 2025 ADU reform allows homeowners to build accessory dwelling units <strong>by-right</strong> — meaning no special permits, no zoning board hearings, and no months of waiting for approvals.</p>
+                <p>Previously, homeowners faced $15,000–$30,000 in permit fees, legal costs, and consultant fees just to get approval. The new law eliminates these barriers, putting thousands back in your pocket.</p>
+            </div>
+
+            <div class="law-visual">
+                <div class="savings-breakdown">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        Your Savings Breakdown
+                    </h3>
+                    <div class="savings-item">
+                        <span class="label">Special Permit Fees</span>
+                        <span class="amount negative">$5,000–$15,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Zoning Attorney</span>
+                        <span class="amount negative">$8,000–$12,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Planning Consultants</span>
+                        <span class="amount negative">$3,000–$8,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Hearing & Appeal Costs</span>
+                        <span class="amount negative">$2,000–$5,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Your Total Savings</span>
+                        <span class="amount total">$20,000–$40,000</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1431,50 +1540,6 @@
                 <div class="benefit-icon">⚡</div>
                 <h3>Fast Timelines</h3>
                 <p>Most projects completed in 90 days. Your ADU is ready when you need it.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MA Law Section -->
-    <section class="ma-law">
-        <div class="law-content">
-            <div class="law-text">
-                <span class="section-tag">2025 Massachusetts ADU Law</span>
-                <h2>The Best Time to Build an ADU in Massachusetts History</h2>
-                <p>Massachusetts' landmark 2025 ADU reform allows homeowners to build accessory dwelling units <strong>by-right</strong> — meaning no special permits, no zoning board hearings, and no months of waiting for approvals.</p>
-                <p>Previously, homeowners faced $15,000–$30,000 in permit fees, legal costs, and consultant fees just to get approval. The new law eliminates these barriers, putting thousands back in your pocket.</p>
-            </div>
-            
-            <div class="law-visual">
-                <div class="savings-breakdown">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="23"/>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                        Your Savings Breakdown
-                    </h3>
-                    <div class="savings-item">
-                        <span class="label">Special Permit Fees</span>
-                        <span class="amount negative">$5,000–$15,000</span>
-                    </div>
-                    <div class="savings-item">
-                        <span class="label">Zoning Attorney</span>
-                        <span class="amount negative">$8,000–$12,000</span>
-                    </div>
-                    <div class="savings-item">
-                        <span class="label">Planning Consultants</span>
-                        <span class="amount negative">$3,000–$8,000</span>
-                    </div>
-                    <div class="savings-item">
-                        <span class="label">Hearing & Appeal Costs</span>
-                        <span class="amount negative">$2,000–$5,000</span>
-                    </div>
-                    <div class="savings-item">
-                        <span class="label">Your Total Savings</span>
-                        <span class="amount total">$20,000–$40,000</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1706,7 +1771,6 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
                 </ul>
             </div>
             
