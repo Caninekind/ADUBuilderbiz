@@ -171,31 +171,6 @@
             position: relative;
         }
 
-        .savings-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 12px rgba(212, 168, 83, 0.25);
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3); }
-            50% { box-shadow: 0 4px 30px rgba(212, 168, 83, 0.5); }
-        }
-
-        .savings-badge svg {
-            width: 18px;
-            height: 18px;
-        }
-
         .hero h1 {
             font-family: 'Outfit', sans-serif;
             font-size: clamp(2.5rem, 4.5vw, 3.8rem);
@@ -203,6 +178,7 @@
             line-height: 1.15;
             color: var(--deep-charcoal);
             margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
             letter-spacing: -0.02em;
         }
 
@@ -1509,13 +1485,6 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <span class="savings-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
-                NEW 2025 MA LAW — SAVE $20K–$40K
-            </span>
-            
             <h1>Build Your Dream ADU <span class="highlight">Without the Red Tape</span></h1>
             
             <p class="hero-subtitle">Massachusetts' new by-right ADU law eliminates costly permits and lengthy approvals. As your local ADU experts, we help you maximize savings and build faster.</p>
