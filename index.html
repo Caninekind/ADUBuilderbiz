@@ -611,6 +611,158 @@
             line-height: 1.6;
         }
 
+        /* About Ron Section */
+        .about-ron {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ron-story {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ron-intro {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ron-avatar {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .ron-title h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .ron-title p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .ron-bio {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .ron-personal {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            font-style: italic;
+            padding-left: 1rem;
+            border-left: 2px solid var(--golden-amber);
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .credential-card {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .credential-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .credential-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .credential-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .credential-card p {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .rating-highlight {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .rating-highlight .stars {
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+        }
+
+        .rating-highlight .rating-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .rating-highlight .rating-text span {
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        @media (max-width: 1024px) {
+            .about-ron {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-highlight {
+                grid-column: span 1;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
         /* MA Law Section */
         .ma-law {
             padding: 5rem 8%;
@@ -1375,13 +1527,6 @@
             </div>
             
             <div class="hero-buttons">
-                <a href="tel:508-840-5994" class="btn-primary">
-                    Call Ron Now
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </a>
                 <a href="#services" class="btn-secondary">
                     Explore Services
                 </a>
@@ -1512,34 +1657,49 @@
     <!-- Why Choose Us -->
     <section class="why-us" id="about">
         <div class="section-header">
-            <span class="section-tag">Why ADU Builder</span>
-            <h2>Massachusetts ADU Experts Since Day One</h2>
-            <p>Local expertise, transparent pricing, and craftsmanship you can trust.</p>
+            <span class="section-tag">Meet Your Builder</span>
+            <h2>30+ Years of New England Construction Excellence</h2>
+            <p>When you work with ADU Builder, you're working directly with Ron — not a sales team.</p>
         </div>
-        
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">📋</div>
-                <h3>Permit-Free Process</h3>
-                <p>We navigate the new by-right regulations so you skip the red tape and save thousands.</p>
+
+        <div class="about-ron">
+            <div class="ron-story">
+                <div class="ron-intro">
+                    <div class="ron-avatar">R</div>
+                    <div class="ron-title">
+                        <h3>Ron</h3>
+                        <p>Founder & Master Builder</p>
+                    </div>
+                </div>
+                <p class="ron-bio">With over 30 years of comprehensive construction experience across New England, Ron has built everything from custom homes to commercial renovations. Now he's focused on helping Massachusetts homeowners take advantage of the new ADU law — bringing the same quality craftsmanship and attention to detail that's earned him a reputation as one of the region's most trusted builders.</p>
+                <p class="ron-personal">"I'm a family man who's raised my kids right here in Massachusetts. I treat every project like I'm building for my own family — because your home deserves nothing less. When you call, you get me directly. No runaround, no sales pitch."</p>
             </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">🏗️</div>
-                <h3>Local Craftsmen</h3>
-                <p>Our Massachusetts-based crews understand New England construction and building codes.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">💰</div>
-                <h3>Transparent Pricing</h3>
-                <p>Fixed quotes with no hidden fees. Know your total investment before we break ground.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">⚡</div>
-                <h3>Fast Timelines</h3>
-                <p>Most projects completed in 90 days. Your ADU is ready when you need it.</p>
+
+            <div class="credentials-grid">
+                <div class="credential-card rating-highlight">
+                    <div class="stars">★★★★★</div>
+                    <div class="rating-text">5.0 Perfect Rating <span>— Read what our clients say</span></div>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🏛️</div>
+                    <h4>MA Licensed Contractor</h4>
+                    <p>Fully licensed and registered with the Commonwealth</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🛡️</div>
+                    <h4>Fully Insured</h4>
+                    <p>Comprehensive liability and workers' comp coverage</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">📐</div>
+                    <h4>30+ Years Experience</h4>
+                    <p>Comprehensive construction across New England</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🏘️</div>
+                    <h4>Community Focused</h4>
+                    <p>Active in local community, building for neighbors</p>
+                </div>
             </div>
         </div>
     </section>
