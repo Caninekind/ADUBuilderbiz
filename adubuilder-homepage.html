@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADU Builder | Massachusetts ADU Construction Experts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-cream: #FAF7F2;
+            --autumn-rust: #B5503C;
+            --forest-green: #2D4A3E;
+            --warm-wood: #8B6C5C;
+            --deep-charcoal: #2C2825;
+            --golden-amber: #D4A853;
+            --soft-sage: #9CAF94;
+            --warm-beige: #E8DFD4;
+            --copper: #C67D4E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--warm-cream);
+            color: var(--deep-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(250, 247, 242, 0.98), rgba(250, 247, 242, 0.9));
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 108, 92, 0.1);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--forest-green);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--autumn-rust);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-charcoal);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--autumn-rust);
+        }
+
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--forest-green);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            background: var(--autumn-rust);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 5% 4rem 8%;
+            position: relative;
+        }
+
+        .savings-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(212, 168, 83, 0.5); }
+        }
+
+        .savings-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--deep-charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            color: var(--autumn-rust);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            width: 100%;
+            height: 0.15em;
+            background: var(--golden-amber);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--warm-wood);
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            line-height: 1.7;
+        }
+
+        .law-callout {
+            background: linear-gradient(135deg, var(--forest-green), #1e3329);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .law-callout::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .law-callout h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .law-callout p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .law-callout .savings-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--golden-amber);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--autumn-rust);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #9a432f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(181, 80, 60, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--forest-green);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--forest-green);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        /* Hero Image Side */
+        .hero-visual {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95);
+        }
+
+        /* Placeholder for hero image - warm ADU illustration */
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(250, 247, 242, 0.1) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        /* Floating Stats */
+        .floating-stat {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .floating-stat.top-right {
+            top: 20%;
+            right: 5%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-stat.bottom-left {
+            bottom: 25%;
+            left: 5%;
+            animation: float 3s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-stat .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--autumn-rust);
+        }
+
+        .floating-stat .label {
+            font-size: 0.85rem;
+            color: var(--warm-wood);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 8%;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--autumn-rust);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            color: var(--deep-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--warm-wood);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--warm-cream);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(139, 108, 92, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .service-image-placeholder.detached {
+            background: linear-gradient(135deg, var(--soft-sage) 0%, var(--forest-green) 100%);
+        }
+
+        .service-image-placeholder.garage {
+            background: linear-gradient(135deg, var(--warm-wood) 0%, var(--copper) 100%);
+        }
+
+        .service-image-placeholder.basement {
+            background: linear-gradient(135deg, var(--golden-amber) 0%, var(--autumn-rust) 100%);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: var(--warm-wood);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--forest-green);
+        }
+
+        .service-features li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--soft-sage);
+            color: var(--forest-green);
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--forest-green) 0%, #1e3329 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .why-us .section-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-us .section-tag {
+            color: var(--golden-amber);
+        }
+
+        .why-us h2 {
+            color: white;
+        }
+
+        .why-us .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .benefit-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* MA Law Section */
+        .ma-law {
+            padding: 8rem 8%;
+            background: var(--warm-cream);
+        }
+
+        .law-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .law-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--deep-charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .law-text p {
+            color: var(--warm-wood);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .savings-breakdown {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .savings-breakdown h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .savings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .savings-item:last-child {
+            border-bottom: none;
+            padding-top: 1.5rem;
+            margin-top: 0.5rem;
+            border-top: 2px solid var(--forest-green);
+        }
+
+        .savings-item .label {
+            color: var(--warm-wood);
+        }
+
+        .savings-item .amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .savings-item .amount.negative {
+            color: var(--autumn-rust);
+            text-decoration: line-through;
+        }
+
+        .savings-item .amount.total {
+            color: var(--forest-green);
+            font-size: 1.8rem;
+        }
+
+        .law-visual {
+            position: relative;
+        }
+
+        .state-seal {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .law-badge {
+            position: absolute;
+            background: var(--autumn-rust);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            bottom: 10%;
+            right: 0;
+            box-shadow: 0 10px 30px rgba(181, 80, 60, 0.3);
+        }
+
+        .law-badge h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .law-badge p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 8%;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -1rem;
+            width: calc(100% - 80px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--golden-amber), var(--autumn-rust));
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--warm-wood);
+            line-height: 1.6;
+        }
+
+        /* Testimonials - Google Reviews Style */
+        .testimonials {
+            padding: 8rem 8%;
+            background: var(--warm-beige);
+        }
+
+        .google-reviews-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .google-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .google-logo svg {
+            height: 32px;
+            width: auto;
+        }
+
+        .google-logo span {
+            font-size: 1.5rem;
+            color: #5f6368;
+            font-weight: 400;
+        }
+
+        .google-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .rating-score {
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--deep-charcoal);
+        }
+
+        .rating-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: #fbbc04;
+            font-size: 1.3rem;
+        }
+
+        .review-count {
+            font-size: 0.9rem;
+            color: #5f6368;
+        }
+
+        .review-count a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .review-count a:hover {
+            text-decoration: underline;
+        }
+
+        .write-review-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            border: 1px solid #dadce0;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            color: #1a73e8;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .write-review-btn:hover {
+            background: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e8eaed;
+            transition: all 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--soft-sage), var(--forest-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-weight: 500;
+            color: var(--deep-charcoal);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .review-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 1px;
+        }
+
+        .review-stars .star {
+            font-size: 0.9rem;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: #5f6368;
+        }
+
+        .review-text {
+            color: #3c4043;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .review-source {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8eaed;
+        }
+
+        .google-icon-small {
+            width: 16px;
+            height: 16px;
+        }
+
+        .review-source span {
+            font-size: 0.8rem;
+            color: #5f6368;
+        }
+
+        .see-all-reviews {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .see-all-reviews a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .see-all-reviews a:hover {
+            background: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 5rem 8%;
+            background: linear-gradient(135deg, var(--warm-wood) 0%, #6b5346 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            outline: none;
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: #999;
+        }
+
+        .newsletter-form button {
+            background: var(--autumn-rust);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: #9a432f;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-privacy {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .google-reviews-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--autumn-rust) 0%, #8a3d2e 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .cta-phone {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cta-phone a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-phone a:hover {
+            opacity: 0.8;
+        }
+
+        .cta .btn-primary {
+            background: white;
+            color: var(--autumn-rust);
+        }
+
+        .cta .btn-primary:hover {
+            background: var(--golden-amber);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 4rem 8% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--golden-amber);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid,
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .law-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 3rem 5%;
+            }
+
+            .benefits-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SVG Illustrations inline */
+        .house-illustration {
+            width: 100%;
+            max-width: 550px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">ADU<span>Builder</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#process">Our Process</a>
+            <a href="#about">About</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="tel:508-840-5994" class="nav-phone">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                508-840-5994
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="savings-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                NEW 2025 MA LAW — SAVE $20K–$40K
+            </span>
+            
+            <h1>Build Your Dream ADU <span class="highlight">Without the Red Tape</span></h1>
+            
+            <p class="hero-subtitle">Massachusetts' new by-right ADU law eliminates costly permits and lengthy approvals. As your local ADU experts, we help you maximize savings and build faster.</p>
+            
+            <div class="law-callout">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                    2025 Massachusetts ADU Reform
+                </h3>
+                <p>Build your ADU <strong>by-right</strong> — no special permits, no zoning hearings, no waiting months for approval. Average homeowner saves <span class="savings-amount">$20,000–$40,000</span> in permit fees and legal costs.</p>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="tel:508-840-5994" class="btn-primary">
+                    Call Ron Now
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
+                <a href="#services" class="btn-secondary">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="hero-image-placeholder">
+                <!-- Hero ADU Image -->
+                <img src="adu-hero-image.jpg" alt="Beautiful modern ADU with warm wood siding and cozy deck at dusk">
+                
+                <!-- Floating Stats -->
+                <div class="floating-stat top-right">
+                    <div class="number">90 Days</div>
+                    <div class="label">Average Build Time</div>
+                </div>
+                <div class="floating-stat bottom-left">
+                    <div class="number">$40K+</div>
+                    <div class="label">Permit Savings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">Our Expertise</span>
+            <h2>ADU Solutions for Every Property</h2>
+            <p>From standalone cottages to smart conversions, we deliver custom ADUs that fit your space, style, and budget.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <div class="service-image-placeholder detached">🏡</div>
+                </div>
+                <div class="service-content">
+                    <h3>Detached ADUs</h3>
+                    <p>Standalone living spaces built in your backyard. Perfect for rental income, multigenerational living, or a private home office.</p>
+                    <ul class="service-features">
+                        <li>Full kitchen & bathroom</li>
+                        <li>Up to 900 sq ft</li>
+                        <li>Complete privacy</li>
+                        <li>Custom architectural design</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-image">
+                    <div class="service-image-placeholder garage">🚗</div>
+                </div>
+                <div class="service-content">
+                    <h3>Garage Conversions</h3>
+                    <p>Transform your underused garage into a beautiful, functional living space. Cost-effective with existing structure.</p>
+                    <ul class="service-features">
+                        <li>Lower construction costs</li>
+                        <li>Faster completion time</li>
+                        <li>Maintains curb appeal</li>
+                        <li>Full insulation & HVAC</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-image">
+                    <div class="service-image-placeholder basement">🏠</div>
+                </div>
+                <div class="service-content">
+                    <h3>Basement Conversions</h3>
+                    <p>Unlock hidden square footage beneath your home. A smart investment that maximizes your existing footprint.</p>
+                    <ul class="service-features">
+                        <li>No lot space required</li>
+                        <li>Natural temperature regulation</li>
+                        <li>Egress windows & safety</li>
+                        <li>Separate entrance option</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="about">
+        <div class="section-header">
+            <span class="section-tag">Why ADU Builder</span>
+            <h2>Massachusetts ADU Experts Since Day One</h2>
+            <p>Local expertise, transparent pricing, and craftsmanship you can trust.</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">📋</div>
+                <h3>Permit-Free Process</h3>
+                <p>We navigate the new by-right regulations so you skip the red tape and save thousands.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🏗️</div>
+                <h3>Local Craftsmen</h3>
+                <p>Our Massachusetts-based crews understand New England construction and building codes.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Transparent Pricing</h3>
+                <p>Fixed quotes with no hidden fees. Know your total investment before we break ground.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Fast Timelines</h3>
+                <p>Most projects completed in 90 days. Your ADU is ready when you need it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MA Law Section -->
+    <section class="ma-law">
+        <div class="law-content">
+            <div class="law-text">
+                <span class="section-tag">2025 Massachusetts ADU Law</span>
+                <h2>The Best Time to Build an ADU in Massachusetts History</h2>
+                <p>Massachusetts' landmark 2025 ADU reform allows homeowners to build accessory dwelling units <strong>by-right</strong> — meaning no special permits, no zoning board hearings, and no months of waiting for approvals.</p>
+                <p>Previously, homeowners faced $15,000–$30,000 in permit fees, legal costs, and consultant fees just to get approval. The new law eliminates these barriers, putting thousands back in your pocket.</p>
+                <a href="tel:508-840-5994" class="btn-primary">
+                    Check If You Qualify
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="law-visual">
+                <div class="savings-breakdown">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        Your Savings Breakdown
+                    </h3>
+                    <div class="savings-item">
+                        <span class="label">Special Permit Fees</span>
+                        <span class="amount negative">$5,000–$15,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Zoning Attorney</span>
+                        <span class="amount negative">$8,000–$12,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Planning Consultants</span>
+                        <span class="amount negative">$3,000–$8,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Hearing & Appeal Costs</span>
+                        <span class="amount negative">$2,000–$5,000</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="label">Your Total Savings</span>
+                        <span class="amount total">$20,000–$40,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <span class="section-tag">How It Works</span>
+            <h2>From Vision to Move-In Ready</h2>
+            <p>Our streamlined process makes building your ADU simple and stress-free.</p>
+        </div>
+        
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Free Consultation</h3>
+                <p>Call Ron to discuss your property, goals, and budget. We'll assess your eligibility under the new MA law.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Design & Planning</h3>
+                <p>Our team creates custom plans tailored to your space. You approve every detail before we begin.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Build Phase</h3>
+                <p>Our local craftsmen bring your ADU to life with quality materials and attention to detail.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Final Walkthrough</h3>
+                <p>We ensure everything meets your expectations before handing over the keys to your new space.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials - Google Reviews -->
+    <section class="testimonials" id="testimonials">
+        <div class="google-reviews-header">
+            <div class="google-logo">
+                <svg viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/>
+                    <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/>
+                    <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/>
+                    <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/>
+                    <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/>
+                    <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4"/>
+                </svg>
+                <span>Reviews</span>
+            </div>
+            
+            <div class="google-rating">
+                <div class="rating-score">5.0</div>
+                <div class="rating-details">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="review-count">
+                        <a href="https://g.page/r/adubuilder/review" target="_blank" rel="noopener">12 reviews</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://g.page/r/adubuilder/review" target="_blank" rel="noopener" class="write-review-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+                Write a review
+            </a>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">MH</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">M. Haigh</div>
+                        <div class="review-meta">
+                            <div class="review-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <span class="review-date">2 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">Working with ADU Builder was a dream. They listened to my ideas and created a space that exceeded my expectations. Ron made the whole process seamless and kept us informed every step of the way. Highly recommend!</p>
+                <div class="review-source">
+                    <svg class="google-icon-small" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span>Posted on Google</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">SR</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">S. Rodriguez</div>
+                        <div class="review-meta">
+                            <div class="review-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <span class="review-date">3 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">The team at ADU Builder were professional and skilled. They transformed my vision into a beautiful, functional living space that now generates steady rental income. The new MA law saved us a fortune in permits!</p>
+                <div class="review-source">
+                    <svg class="google-icon-small" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span>Posted on Google</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">VM</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">V. Maru</div>
+                        <div class="review-meta">
+                            <div class="review-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <span class="review-date">4 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">I highly recommend ADU Builder for anyone looking to build a custom ADU. Their attention to detail and quality work are unmatched. Ron and his team completed our garage conversion ahead of schedule. Worth every penny.</p>
+                <div class="review-source">
+                    <svg class="google-icon-small" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <span>Posted on Google</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="see-all-reviews">
+            <a href="https://www.google.com/maps/place/ADU+Builder" target="_blank" rel="noopener">
+                See all reviews on Google
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated on ADU News & Savings</h2>
+            <p>Get the latest on Massachusetts ADU regulations, design inspiration, and exclusive tips to maximize your property's potential.</p>
+            <form class="newsletter-form" action="#" method="POST">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Build Your ADU?</h2>
+        <p>Take advantage of the new Massachusetts law and save $20K–$40K on your ADU project. Call Ron today for a free consultation.</p>
+        <span class="cta-phone"><a href="tel:508-840-5994">508-840-5994</a></span>
+        <a href="tel:508-840-5994" class="btn-primary">
+            Schedule Free Consultation
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">ADU<span>Builder</span></div>
+                <p>Massachusetts' trusted ADU construction experts. We specialize in detached ADUs, garage conversions, and basement conversions — helping homeowners maximize their property potential under the new 2025 by-right law.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Detached ADUs</a></li>
+                    <li><a href="#services">Garage Conversions</a></li>
+                    <li><a href="#services">Basement Conversions</a></li>
+                    <li><a href="#process">Our Process</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section footer-contact">
+                <h4 class="footer-heading">Contact Ron</h4>
+                <p><a href="tel:508-840-5994">508-840-5994</a></p>
+                <p><a href="mailto:armanypartner@gmail.com">armanypartner@gmail.com</a></p>
+                <p>Serving Boston & All of Massachusetts</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 ADU Builder. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
