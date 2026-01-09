@@ -713,6 +713,10 @@
             display: inline-block;
         }
 
+        .services-scroll-wrapper {
+            position: relative;
+        }
+
         .services-scroll-container {
             overflow: hidden;
             margin: 0 -8%;
@@ -727,10 +731,65 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            scroll-behavior: smooth;
         }
 
         .services-grid::-webkit-scrollbar {
             display: none;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 1px solid rgba(139, 108, 92, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .scroll-arrow:hover {
+            background: var(--autumn-rust);
+            border-color: var(--autumn-rust);
+            box-shadow: 0 6px 20px rgba(181, 80, 60, 0.3);
+        }
+
+        .scroll-arrow:hover svg {
+            stroke: white;
+        }
+
+        .scroll-arrow svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--deep-charcoal);
+            transition: stroke 0.2s ease;
+        }
+
+        .scroll-arrow-left {
+            left: -24px;
+        }
+
+        .scroll-arrow-right {
+            right: -24px;
+        }
+
+        .scroll-arrow.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-arrow {
+                display: none;
+            }
         }
 
         .service-card {
@@ -2647,11 +2706,17 @@
             <p>From backyard cottages to smart conversions, we build custom ADUs that fit your space, style, and budget.</p>
         </div>
 
-        <div class="services-scroll-container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600&q=80" alt="Modern backyard cottage ADU">
+        <div class="services-scroll-wrapper">
+            <button class="scroll-arrow scroll-arrow-left" id="servicesScrollLeft" aria-label="Scroll left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <div class="services-scroll-container">
+                <div class="services-grid" id="servicesGrid">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600&q=80" alt="Modern backyard cottage ADU">
                         <div class="service-image-overlay"></div>
                         <span class="service-badge">Detached</span>
                     </div>
@@ -2781,7 +2846,13 @@
                         </a>
                     </div>
                 </div>
+                </div>
             </div>
+            <button class="scroll-arrow scroll-arrow-right" id="servicesScrollRight" aria-label="Scroll right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
         </div>
     </section>
 
@@ -3131,5 +3202,40 @@
             <p>© 2025 ADU Builder. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
+
+    <script>
+        // Services scroll arrows
+        (function() {
+            const grid = document.getElementById('servicesGrid');
+            const leftBtn = document.getElementById('servicesScrollLeft');
+            const rightBtn = document.getElementById('servicesScrollRight');
+
+            if (!grid || !leftBtn || !rightBtn) return;
+
+            const scrollAmount = 320;
+
+            function updateArrows() {
+                const isAtStart = grid.scrollLeft <= 10;
+                const isAtEnd = grid.scrollLeft >= grid.scrollWidth - grid.clientWidth - 10;
+
+                leftBtn.classList.toggle('hidden', isAtStart);
+                rightBtn.classList.toggle('hidden', isAtEnd);
+            }
+
+            leftBtn.addEventListener('click', function() {
+                grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', function() {
+                grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            grid.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+
+            // Initial state
+            updateArrows();
+        })();
+    </script>
 </body>
 </html>
