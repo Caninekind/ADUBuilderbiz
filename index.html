@@ -2444,14 +2444,14 @@
                 -webkit-overflow-scrolling: touch;
                 gap: 1rem;
                 margin-top: 2rem;
-                padding: 0.5rem 5% 1.5rem;
+                padding: 0.5rem calc(50% - 130px) 1.5rem;
                 scrollbar-width: none;
             }
             .process-steps::-webkit-scrollbar { display: none; }
 
             .process-step {
                 flex: 0 0 260px;
-                scroll-snap-align: start;
+                scroll-snap-align: center;
                 background: var(--warm-cream);
                 padding: 1.5rem;
                 border-radius: 12px;
