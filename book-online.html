@@ -172,7 +172,7 @@
 
         /* Page Hero */
         .page-hero {
-            padding: 140px 8% 60px;
+            padding: 140px 8% 50px;
             text-align: center;
             background: linear-gradient(180deg, var(--warm-cream) 0%, white 100%);
             position: relative;
@@ -234,231 +234,261 @@
             z-index: 1;
         }
 
-        /* Booking Section */
-        .booking-section {
+        /* Services Grid */
+        .services-section {
             padding: 4rem 8%;
             background: white;
         }
 
-        .booking-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: start;
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        /* Left Side - Info */
-        .booking-info {
-            position: sticky;
-            top: 100px;
-        }
-
-        .booking-info h2 {
-            font-size: 1.75rem;
+        .services-header h2 {
+            font-size: 1.5rem;
             color: var(--forest-green);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
-        .booking-info > p {
+        .services-header p {
             color: var(--warm-wood);
-            margin-bottom: 2rem;
             font-size: 1rem;
-            line-height: 1.7;
         }
 
-        .consultation-types {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .consultation-type {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.25rem;
-            background: var(--warm-cream);
-            border-radius: 12px;
-            border: 1px solid var(--warm-beige);
-            transition: all 0.2s ease;
-        }
-
-        .consultation-type:hover {
-            border-color: var(--autumn-rust);
-            transform: translateX(4px);
-        }
-
-        .consultation-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--autumn-rust), #8a3d2e);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .consultation-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-        }
-
-        .consultation-icon.green {
-            background: linear-gradient(135deg, var(--forest-green), #1e3329);
-        }
-
-        .consultation-icon.gold {
-            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
-        }
-
-        .consultation-details h3 {
-            font-size: 1rem;
-            color: var(--deep-charcoal);
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-        }
-
-        .consultation-details p {
-            font-size: 0.85rem;
-            color: var(--warm-wood);
-            line-height: 1.5;
-        }
-
-        .consultation-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .consultation-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.75rem;
-            color: var(--forest-green);
-            font-weight: 600;
-        }
-
-        .consultation-meta svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Trust indicators */
-        .trust-section {
-            background: linear-gradient(135deg, var(--forest-green), #1e3329);
-            padding: 1.5rem;
-            border-radius: 12px;
-            color: white;
-        }
-
-        .trust-section h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .trust-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.85rem;
-            opacity: 0.95;
-        }
-
-        .trust-item svg {
-            width: 18px;
-            height: 18px;
-            color: var(--golden-amber);
-            flex-shrink: 0;
-        }
-
-        /* Right Side - Booking Widget */
-        .booking-widget-area {
+        .service-card {
             background: var(--warm-cream);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid var(--warm-beige);
-            min-height: 600px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .booking-widget-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--warm-beige);
+        .service-card:hover {
+            border-color: var(--autumn-rust);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(181, 80, 60, 0.15);
         }
 
-        .booking-widget-header h3 {
-            font-size: 1.25rem;
-            color: var(--forest-green);
+        .service-card.featured {
+            border-color: var(--golden-amber);
+            background: linear-gradient(135deg, rgba(212, 168, 83, 0.08) 0%, var(--warm-cream) 100%);
+        }
+
+        .service-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--golden-amber);
+            color: var(--deep-charcoal);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 2.5rem;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--autumn-rust), #8a3d2e);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: white;
+        }
+
+        .service-icon.green {
+            background: linear-gradient(135deg, var(--forest-green), #1e3329);
+        }
+
+        .service-icon.gold {
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+        }
+
+        .service-icon.sage {
+            background: linear-gradient(135deg, var(--soft-sage), #7a9472);
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            color: var(--deep-charcoal);
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
 
-        .booking-widget-header p {
+        .service-card .description {
             font-size: 0.9rem;
+            color: var(--warm-wood);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .service-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--warm-beige);
+        }
+
+        .service-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
             color: var(--warm-wood);
         }
 
-        /* Booking Widget Placeholder */
-        .booking-widget-placeholder {
+        .service-duration svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .service-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--forest-green);
+        }
+
+        .service-price.free {
+            color: var(--autumn-rust);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-features li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--forest-green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .btn-book {
+            display: block;
+            width: 100%;
+            background: var(--autumn-rust);
+            color: white;
+            padding: 0.9rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-book:hover {
+            background: #9a432f;
+            transform: translateY(-2px);
+        }
+
+        .btn-book.gold {
+            background: var(--golden-amber);
+            color: var(--deep-charcoal);
+        }
+
+        .btn-book.gold:hover {
+            background: #c9993d;
+        }
+
+        /* Square Widget Section */
+        .booking-widget-section {
+            padding: 4rem 8%;
+            background: var(--warm-cream);
+        }
+
+        .widget-container {
+            max-width: 900px;
+            margin: 0 auto;
             background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .widget-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .widget-header h2 {
+            font-size: 1.5rem;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .widget-header p {
+            color: var(--warm-wood);
+            font-size: 0.95rem;
+        }
+
+        /* Square Booking Placeholder */
+        .square-booking-placeholder {
+            background: var(--warm-cream);
             border-radius: 12px;
             padding: 3rem 2rem;
             text-align: center;
             border: 2px dashed var(--warm-beige);
-            min-height: 400px;
+            min-height: 350px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        .widget-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, rgba(181, 80, 60, 0.1), rgba(212, 168, 83, 0.1));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .square-logo {
+            width: 60px;
+            height: 60px;
             margin-bottom: 1.5rem;
         }
 
-        .widget-icon svg {
-            width: 40px;
-            height: 40px;
-            stroke: var(--autumn-rust);
-        }
-
-        .booking-widget-placeholder h4 {
+        .square-booking-placeholder h4 {
             font-size: 1.1rem;
             color: var(--deep-charcoal);
             margin-bottom: 0.75rem;
             font-weight: 600;
         }
 
-        .booking-widget-placeholder p {
+        .square-booking-placeholder p {
             font-size: 0.9rem;
             color: var(--warm-wood);
-            max-width: 300px;
+            max-width: 400px;
             margin-bottom: 1.5rem;
             line-height: 1.6;
         }
@@ -469,7 +499,7 @@
             border-radius: 8px;
             font-size: 0.8rem;
             color: var(--forest-green);
-            max-width: 320px;
+            max-width: 400px;
         }
 
         /* Alternative Contact */
@@ -514,7 +544,6 @@
         .contact-btn.primary:hover {
             background: #9a432f;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(181, 80, 60, 0.35);
         }
 
         .contact-btn.secondary {
@@ -533,89 +562,65 @@
             height: 18px;
         }
 
-        /* What to Expect Section */
-        .expect-section {
-            padding: 5rem 8%;
-            background: var(--warm-cream);
+        /* Trust Section */
+        .trust-section {
+            padding: 4rem 8%;
+            background: linear-gradient(135deg, var(--forest-green) 0%, #1e3329 100%);
+            color: white;
         }
 
-        .expect-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .expect-header h2 {
-            font-size: 1.75rem;
-            color: var(--forest-green);
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-        }
-
-        .expect-header p {
-            font-size: 1rem;
-            color: var(--warm-wood);
-        }
-
-        .expect-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            max-width: 1100px;
+        .trust-content {
+            max-width: 900px;
             margin: 0 auto;
-        }
-
-        .expect-item {
-            text-align: center;
-            position: relative;
-        }
-
-        .expect-item::after {
-            content: '';
-            position: absolute;
-            top: 35px;
-            right: -1rem;
-            width: calc(100% - 70px);
-            height: 2px;
-            background: linear-gradient(90deg, var(--golden-amber), var(--autumn-rust));
-        }
-
-        .expect-item:last-child::after {
-            display: none;
-        }
-
-        .expect-number {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
-            border-radius: 50%;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.25rem;
+        }
+
+        .trust-text h2 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: white;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 1rem;
         }
 
-        .expect-item h3 {
-            font-size: 1rem;
-            color: var(--deep-charcoal);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        .trust-text p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .expect-item p {
-            font-size: 0.85rem;
-            color: var(--warm-wood);
-            line-height: 1.6;
+        .trust-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+        }
+
+        .trust-item svg {
+            width: 24px;
+            height: 24px;
+            color: var(--golden-amber);
+            flex-shrink: 0;
+        }
+
+        .trust-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* CTA Section */
         .cta-section {
             padding: 5rem 8%;
-            background: linear-gradient(135deg, var(--autumn-rust) 0%, #8a3d2e 100%);
+            background: var(--autumn-rust);
             color: white;
             text-align: center;
             position: relative;
@@ -765,21 +770,14 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .booking-container {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .booking-info {
-                position: static;
-            }
-
-            .expect-grid {
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .expect-item::after {
-                display: none;
+            .trust-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
             }
 
             .footer-content {
@@ -800,40 +798,28 @@
                 font-size: 1.75rem;
             }
 
-            .booking-section {
-                padding: 2.5rem 5%;
+            .services-section {
+                padding: 3rem 5%;
             }
 
-            .booking-widget-area {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.featured::before {
+                right: -2.5rem;
+            }
+
+            .booking-widget-section {
+                padding: 3rem 5%;
+            }
+
+            .widget-container {
                 padding: 1.5rem;
             }
 
-            .consultation-type {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .consultation-icon {
-                margin: 0 auto;
-            }
-
-            .consultation-meta {
-                justify-content: center;
-            }
-
-            .expect-section {
-                padding: 3.5rem 5%;
-            }
-
-            .expect-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .expect-number {
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
+            .trust-section {
+                padding: 3rem 5%;
             }
 
             .cta-section {
@@ -868,12 +854,22 @@
                 font-size: 1.5rem;
             }
 
-            .booking-info h2 {
-                font-size: 1.4rem;
+            .services-header h2 {
+                font-size: 1.25rem;
             }
 
-            .expect-header h2 {
-                font-size: 1.4rem;
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .service-icon svg {
+                width: 24px;
+                height: 24px;
             }
         }
     </style>
@@ -922,224 +918,345 @@
                 <line x1="8" y1="2" x2="8" y2="6"/>
                 <line x1="3" y1="10" x2="21" y2="10"/>
             </svg>
-            Free Consultation
+            Book With Ronnie
         </div>
         <h1>Schedule Your ADU Consultation</h1>
-        <p>Take the first step toward your dream ADU. Book a free consultation with Ronnie to discuss your project, explore options, and get a personalized quote.</p>
+        <p>Choose the service that best fits your needs. From free phone consultations to comprehensive project planning, we're here to help you build your dream ADU.</p>
     </section>
 
-    <!-- Booking Section -->
-    <section class="booking-section">
-        <div class="booking-container">
-            <!-- Left Side - Info -->
-            <div class="booking-info">
-                <h2>Choose Your Consultation Type</h2>
-                <p>Whether you prefer a phone call, video chat, or in-person site visit, we're flexible to meet your needs. All consultations are completely free with no obligation.</p>
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="services-header">
+            <h2>Our Consultation Services</h2>
+            <p>Select a service to book your appointment</p>
+        </div>
 
-                <div class="consultation-types">
-                    <div class="consultation-type">
-                        <div class="consultation-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                        </div>
-                        <div class="consultation-details">
-                            <h3>Phone Consultation</h3>
-                            <p>Quick discussion about your ADU goals, property eligibility, and budget considerations.</p>
-                            <div class="consultation-meta">
-                                <span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <polyline points="12 6 12 12 16 14"/>
-                                    </svg>
-                                    15-30 min
-                                </span>
-                                <span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                                    </svg>
-                                    Free
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="consultation-type">
-                        <div class="consultation-icon green">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M23 7l-7 5 7 5V7z"/>
-                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                            </svg>
-                        </div>
-                        <div class="consultation-details">
-                            <h3>Video Consultation</h3>
-                            <p>Virtual meeting to review your property photos, discuss designs, and explore floor plan options.</p>
-                            <div class="consultation-meta">
-                                <span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <polyline points="12 6 12 12 16 14"/>
-                                    </svg>
-                                    30-45 min
-                                </span>
-                                <span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                                    </svg>
-                                    Free
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="consultation-type">
-                        <div class="consultation-icon gold">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9 22 9 12 15 12 15 22"/>
-                            </svg>
-                        </div>
-                        <div class="consultation-details">
-                            <h3>In-Person Site Visit</h3>
-                            <p>Ronnie visits your property to assess the space, discuss placement options, and provide accurate estimates.</p>
-                            <div class="consultation-meta">
-                                <span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <polyline points="12 6 12 12 16 14"/>
-                                    </svg>
-                                    45-60 min
-                                </span>
-                                <span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                                    </svg>
-                                    Free
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+        <div class="services-grid">
+            <!-- Phone Consultation - FREE -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
                 </div>
-
-                <div class="trust-section">
-                    <h4>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="M9 12l2 2 4-4"/>
-                        </svg>
-                        Why Book With Us
-                    </h4>
-                    <div class="trust-items">
-                        <div class="trust-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            <span>30+ years of New England construction experience</span>
-                        </div>
-                        <div class="trust-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            <span>MA Licensed CSL & HIC Certified contractor</span>
-                        </div>
-                        <div class="trust-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            <span>5.0 star rating on Google Reviews</span>
-                        </div>
-                        <div class="trust-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            <span>No salespeople - work directly with Ronnie</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side - Booking Widget -->
-            <div class="booking-widget-area">
-                <div class="booking-widget-header">
-                    <h3>Select a Date & Time</h3>
-                    <p>Choose a convenient time slot for your free consultation</p>
-                </div>
-
-                <!-- Placeholder for Wix Bookings Widget -->
-                <div class="booking-widget-placeholder">
-                    <div class="widget-icon">
+                <h3>Phone Consultation</h3>
+                <p class="description">Quick discussion about your ADU goals, property eligibility under the new MA law, and initial budget considerations.</p>
+                <div class="service-meta">
+                    <span class="service-duration">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                            <path d="M8 14h.01"/>
-                            <path d="M12 14h.01"/>
-                            <path d="M16 14h.01"/>
-                            <path d="M8 18h.01"/>
-                            <path d="M12 18h.01"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
                         </svg>
-                    </div>
-                    <h4>Online Booking Coming Soon</h4>
-                    <p>Our online scheduling system is being set up. In the meantime, please call or email us to book your consultation.</p>
-                    <div class="widget-note">
-                        <strong>Note for site owner:</strong> Replace this placeholder with your Wix Bookings embed code when ready.
-                    </div>
+                        15-30 min
+                    </span>
+                    <span class="service-price free">FREE</span>
                 </div>
+                <ul class="service-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Discuss your ADU vision and goals
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Review MA ADU law eligibility
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Get ballpark pricing estimates
+                    </li>
+                </ul>
+                <a href="#booking-widget" class="btn-book">Book Free Call</a>
+            </div>
 
-                <!-- Alternative Contact Options -->
-                <div class="alternative-contact">
-                    <p>Prefer to reach out directly?</p>
-                    <div class="contact-methods">
-                        <a href="tel:508-840-5994" class="contact-btn primary">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                            Call 508-840-5994
-                        </a>
-                        <a href="mailto:armanypartner@gmail.com" class="contact-btn secondary">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                            Send Email
-                        </a>
-                    </div>
+            <!-- On-Site Visit - $200 -->
+            <div class="service-card featured">
+                <div class="service-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <h3>On-Site Property Visit</h3>
+                <p class="description">Ronnie visits your property to assess the space, evaluate placement options, and discuss realistic project possibilities.</p>
+                <div class="service-meta">
+                    <span class="service-duration">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        60-90 min
+                    </span>
+                    <span class="service-price">$200</span>
+                </div>
+                <ul class="service-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        In-person property evaluation
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        ADU placement recommendations
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Preliminary cost assessment
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Credit toward project if signed
+                    </li>
+                </ul>
+                <a href="#booking-widget" class="btn-book gold">Book Site Visit</a>
+            </div>
+
+            <!-- Conversion Feasibility Assessment - $350 -->
+            <div class="service-card">
+                <div class="service-icon sage">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                </div>
+                <h3>Conversion Feasibility Assessment</h3>
+                <p class="description">Expert evaluation of your existing garage, basement, or attic space to determine ADU conversion potential.</p>
+                <div class="service-meta">
+                    <span class="service-duration">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        90 min
+                    </span>
+                    <span class="service-price">$350</span>
+                </div>
+                <ul class="service-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Structural assessment
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Utility connection evaluation
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Code compliance review
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Written feasibility report
+                    </li>
+                </ul>
+                <a href="#booking-widget" class="btn-book">Book Assessment</a>
+            </div>
+
+            <!-- Design Consultation - $500 -->
+            <div class="service-card">
+                <div class="service-icon gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                </div>
+                <h3>Design Consultation</h3>
+                <p class="description">In-depth design session to discuss your ADU's layout, finishes, and customization options with Ronnie.</p>
+                <div class="service-meta">
+                    <span class="service-duration">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        2 hours
+                    </span>
+                    <span class="service-price">$500</span>
+                </div>
+                <ul class="service-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Review floor plan options
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Discuss finishes and materials
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Customization possibilities
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Preliminary design sketches
+                    </li>
+                </ul>
+                <a href="#booking-widget" class="btn-book">Book Design Session</a>
+            </div>
+
+            <!-- Full Project Estimate - $750 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <h3>Full Project Estimate</h3>
+                <p class="description">Comprehensive cost estimate including materials, labor, permits, and timeline for your complete ADU project.</p>
+                <div class="service-meta">
+                    <span class="service-duration">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        3-5 days
+                    </span>
+                    <span class="service-price">$750</span>
+                </div>
+                <ul class="service-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Detailed line-item estimate
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Material specifications
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Project timeline
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        100% credit toward project
+                    </li>
+                </ul>
+                <a href="#booking-widget" class="btn-book">Get Full Estimate</a>
+            </div>
+
+            <!-- Custom Plan Draft - $1,000 -->
+            <div class="service-card">
+                <div class="service-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3>Custom Plan Draft</h3>
+                <p class="description">Professional architectural draft of your custom ADU design, tailored to your property and specific requirements.</p>
+                <div class="service-meta">
+                    <span class="service-duration">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        1-2 weeks
+                    </span>
+                    <span class="service-price">$1,000</span>
+                </div>
+                <ul class="service-features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Custom floor plan design
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Exterior elevation drawings
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Two revision rounds included
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        100% credit toward project
+                    </li>
+                </ul>
+                <a href="#booking-widget" class="btn-book">Order Custom Plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Square Booking Widget Section -->
+    <section class="booking-widget-section" id="booking-widget">
+        <div class="widget-container">
+            <div class="widget-header">
+                <h2>Select a Date & Time</h2>
+                <p>Choose your preferred appointment slot below</p>
+            </div>
+
+            <!-- Square Booking Placeholder -->
+            <div class="square-booking-placeholder">
+                <svg class="square-logo" viewBox="0 0 64 64" fill="none">
+                    <rect width="64" height="64" rx="8" fill="#006AFF"/>
+                    <rect x="16" y="16" width="32" height="32" rx="4" fill="white"/>
+                    <rect x="24" y="24" width="16" height="16" rx="2" fill="#006AFF"/>
+                </svg>
+                <h4>Square Appointments</h4>
+                <p>Our online booking system is powered by Square. Select a service above and choose your preferred date and time.</p>
+                <div class="widget-note">
+                    <strong>Site Owner:</strong> Replace this placeholder with your Square Appointments embed code. Go to Square Dashboard → Appointments → Online Booking → Get Embed Code.
+                </div>
+            </div>
+
+            <!-- Alternative Contact Options -->
+            <div class="alternative-contact">
+                <p>Prefer to schedule directly? Call or email us.</p>
+                <div class="contact-methods">
+                    <a href="tel:508-840-5994" class="contact-btn primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Call 508-840-5994
+                    </a>
+                    <a href="mailto:armanypartner@gmail.com" class="contact-btn secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Send Email
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What to Expect Section -->
-    <section class="expect-section">
-        <div class="expect-header">
-            <h2>What to Expect From Your Consultation</h2>
-            <p>Here's what we'll cover during your free consultation with Ronnie</p>
-        </div>
-
-        <div class="expect-grid">
-            <div class="expect-item">
-                <div class="expect-number">1</div>
-                <h3>Property Assessment</h3>
-                <p>We'll discuss your property's layout, lot size, and any zoning considerations under the new MA ADU law.</p>
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-content">
+            <div class="trust-text">
+                <h2>Why Choose ADU Builder?</h2>
+                <p>With over 30 years of construction experience in New England, Ronnie brings unmatched expertise to every ADU project. When you book with us, you work directly with the owner — no salespeople, no runaround.</p>
             </div>
-
-            <div class="expect-item">
-                <div class="expect-number">2</div>
-                <h3>Design Options</h3>
-                <p>Explore different ADU types that suit your needs - from backyard cottages to garage conversions.</p>
-            </div>
-
-            <div class="expect-item">
-                <div class="expect-number">3</div>
-                <h3>Budget Planning</h3>
-                <p>Get a realistic estimate based on your goals and learn about financing options available to you.</p>
-            </div>
-
-            <div class="expect-item">
-                <div class="expect-number">4</div>
-                <h3>Timeline Overview</h3>
-                <p>Understand the typical project timeline and what to expect at each phase of construction.</p>
+            <div class="trust-items">
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>MA Licensed CSL & HIC Certified</span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    <span>5.0 Star Rating on Google</span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>30+ Years Experience</span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                    </svg>
+                    <span>Work Directly With the Owner</span>
+                </div>
             </div>
         </div>
     </section>
