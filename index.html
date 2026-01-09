@@ -258,7 +258,7 @@
         .hero {
             min-height: 100vh;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 1fr;
             padding-top: 80px;
         }
 
@@ -266,18 +266,43 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 4rem 5% 4rem 8%;
+            padding: 3rem 4% 3rem 8%;
             position: relative;
+            background: linear-gradient(135deg, var(--warm-cream) 0%, rgba(232, 223, 212, 0.4) 100%);
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            right: -30px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(212, 168, 83, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(45, 74, 62, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .hero h1 {
             font-family: 'Inter', sans-serif;
-            font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+            font-size: clamp(2.5rem, 4.5vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.15;
+            line-height: 1.1;
             color: var(--deep-charcoal);
-            margin-bottom: 1.5rem;
-            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
             letter-spacing: -0.02em;
         }
 
@@ -286,17 +311,17 @@
             position: relative;
             display: inline;
             background-image: linear-gradient(var(--golden-amber), var(--golden-amber));
-            background-size: 100% 3px;
+            background-size: 100% 4px;
             background-repeat: no-repeat;
             background-position: 0 100%;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--warm-wood);
-            margin-bottom: 2.5rem;
-            max-width: 480px;
-            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            line-height: 1.65;
         }
 
         .law-callout {
@@ -395,9 +420,11 @@
         /* Hero Trust Badges */
         .hero-trust-badges {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .trust-badge {
@@ -405,15 +432,21 @@
             align-items: center;
             gap: 0.6rem;
             background: white;
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 0.9rem;
             border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            border: 1px solid rgba(139, 108, 92, 0.12);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(139, 108, 92, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .trust-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
         }
 
         .trust-badge-icon {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -436,7 +469,7 @@
         }
 
         .trust-badge-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--warm-wood);
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -444,7 +477,7 @@
         }
 
         .trust-badge-value {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--deep-charcoal);
             line-height: 1.3;
@@ -453,39 +486,76 @@
         .google-stars {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 1px;
         }
 
         .google-stars .star {
             color: #fbbc04;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .google-rating-text {
             font-size: 0.75rem;
             color: #5f6368;
             margin-left: 0.25rem;
+            font-weight: 600;
         }
 
         /* Hero Value Props */
         .hero-value-props {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .value-prop {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
+            gap: 0.4rem;
+            font-size: 0.9rem;
             color: var(--deep-charcoal);
+            font-weight: 500;
+            background: rgba(255,255,255,0.7);
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(45, 74, 62, 0.1);
         }
 
         .value-prop svg {
             color: var(--forest-green);
             flex-shrink: 0;
+        }
+
+        /* Hero Stats Row */
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(139, 108, 92, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--autumn-rust);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--warm-wood);
+            margin-top: 0.25rem;
         }
 
         /* Hero Image Side */
@@ -1691,39 +1761,65 @@
             }
 
             .hero-trust-badges {
-                gap: 0.75rem;
-                margin-bottom: 1.5rem;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
             }
 
             .trust-badge {
-                padding: 0.5rem 0.75rem;
+                padding: 0.4rem 0.6rem;
             }
 
             .trust-badge-icon {
-                width: 30px;
-                height: 30px;
+                width: 28px;
+                height: 28px;
+            }
+
+            .trust-badge-icon svg {
+                width: 16px;
+                height: 16px;
             }
 
             .trust-badge-label {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
             }
 
             .trust-badge-value {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
 
             .hero-value-props {
-                gap: 1rem;
-                margin-bottom: 1.5rem;
+                gap: 0.5rem;
+                margin-bottom: 1.25rem;
             }
 
             .value-prop {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
             }
 
-            .hero-buttons .btn-primary {
+            .value-prop svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .hero-stats {
+                gap: 1.25rem;
+                margin-top: 1.25rem;
+                padding-top: 1.25rem;
+            }
+
+            .hero-stat-number {
+                font-size: 1.5rem;
+            }
+
+            .hero-stat-label {
+                font-size: 0.7rem;
             }
 
             .law-callout {
@@ -2280,6 +2376,22 @@
                 <a href="#services" class="btn-secondary">
                     View Our Work
                 </a>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">30+</div>
+                    <div class="hero-stat-label">Years Experience</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">100+</div>
+                    <div class="hero-stat-label">Projects Completed</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">90</div>
+                    <div class="hero-stat-label">Day Avg. Build Time</div>
+                </div>
             </div>
         </div>
 
