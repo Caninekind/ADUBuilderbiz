@@ -911,7 +911,7 @@
 
         /* Why Choose Us */
         .why-us {
-            padding: 5rem 8%;
+            padding: 3rem 8%;
             background: linear-gradient(135deg, var(--forest-green) 0%, #1e3329 100%);
             color: white;
             position: relative;
@@ -931,6 +931,7 @@
         .why-us .section-header {
             position: relative;
             z-index: 1;
+            margin-bottom: 1.5rem;
         }
 
         .why-us .section-tag {
@@ -939,10 +940,12 @@
 
         .why-us h2 {
             color: white;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
         }
 
         .why-us .section-header p {
             color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
         }
 
         .benefits-grid {
@@ -986,7 +989,7 @@
 
         /* About Ron Section */
         .about-ron {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             position: relative;
             z-index: 1;
             max-width: 800px;
@@ -997,28 +1000,28 @@
         .ron-story {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.25rem 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ron-intro {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .ron-avatar {
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--golden-amber), var(--copper));
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
             overflow: hidden;
         }
@@ -1031,30 +1034,30 @@
 
         .ron-title h3 {
             font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.15rem;
         }
 
         .ron-title p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.8;
             margin: 0;
         }
 
         .ron-bio {
-            font-size: 0.9rem;
-            line-height: 1.7;
+            font-size: 0.85rem;
+            line-height: 1.6;
             opacity: 0.9;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .ron-personal {
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
             opacity: 0.8;
             font-style: italic;
-            padding-left: 1rem;
+            padding-left: 0.75rem;
             border-left: 2px solid var(--golden-amber);
         }
 
@@ -1104,26 +1107,26 @@
 
         /* Blog Section */
         .blog-section {
-            margin-top: 3rem;
+            margin-top: 1.75rem;
             position: relative;
             z-index: 1;
         }
 
         .blog-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .blog-header h3 {
             font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             color: white;
         }
 
         .blog-header p {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.8;
             color: rgba(255,255,255,0.85);
         }
@@ -1136,9 +1139,9 @@
 
         .blog-scroll {
             display: flex;
-            gap: 1.25rem;
+            gap: 1rem;
             overflow-x: auto;
-            padding: 0.5rem 0 1.5rem;
+            padding: 0.25rem 0 1rem;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
@@ -1149,9 +1152,9 @@
         }
 
         .blog-card {
-            flex: 0 0 280px;
+            flex: 0 0 220px;
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -1160,12 +1163,12 @@
         }
 
         .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
         }
 
         .blog-card-image {
-            height: 140px;
+            height: 100px;
             overflow: hidden;
         }
 
@@ -1181,56 +1184,60 @@
         }
 
         .blog-card-content {
-            padding: 1rem;
+            padding: 0.75rem;
         }
 
         .blog-card-category {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--autumn-rust);
             background: rgba(181, 80, 60, 0.1);
-            padding: 0.2rem 0.5rem;
+            padding: 0.15rem 0.4rem;
             border-radius: 3px;
             display: inline-block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
         }
 
         .blog-card-content h4 {
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--deep-charcoal);
-            margin-bottom: 0.4rem;
-            line-height: 1.3;
+            margin-bottom: 0.25rem;
+            line-height: 1.25;
         }
 
         .blog-card-content p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--warm-wood);
-            line-height: 1.5;
+            line-height: 1.4;
             margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .blog-actions {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 1.25rem;
         }
 
         .btn-blog-all {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             background: var(--golden-amber);
             color: var(--deep-charcoal);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: all 0.2s ease;
         }
@@ -2686,11 +2693,11 @@
                 </div>
             </div>
 
-            <h1>Building High Quality Accessory Dwelling Units (ADUs) in New England <span class="highlight">for Over 30 Years</span></h1>
+            <h1>Building High Quality Accessory Dwelling Units in New England<br><span class="highlight">for Over 30 Years</span></h1>
 
             <p class="hero-subtitle">Welcome to ADU Builder, where we specialize in crafting custom-built Accessory Dwelling Units in Boston and Massachusetts. Our commitment to quality and innovation sets us apart, ensuring your ADU is a unique reflection of your needs and style.</p>
 
-            <p class="hero-subtitle-secondary">Work directly with Ronnie — no salespeople, no runaround. Just quality craftsmanship, competitive pricing, and on-time delivery from a builder you can trust.</p>
+            <p class="hero-subtitle">Work directly with Ronnie — no salespeople, no runaround. Just quality craftsmanship, competitive pricing, and on-time delivery from a builder you can trust.</p>
 
             <!-- Value Props -->
             <div class="hero-value-props">
@@ -2720,28 +2727,12 @@
 
             <div class="hero-buttons">
                 <a href="#services" class="btn-primary">
-                    See Why We're Different
+                    Explore Our Floor Plans
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12"/>
                         <polyline points="12 5 19 12 12 19"/>
                     </svg>
                 </a>
-            </div>
-
-            <!-- Stats Row -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">30+</div>
-                    <div class="hero-stat-label">Years Experience</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">100+</div>
-                    <div class="hero-stat-label">Projects Completed</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">90</div>
-                    <div class="hero-stat-label">Day Avg. Build Time</div>
-                </div>
             </div>
         </div>
 
@@ -2805,25 +2796,17 @@
             <p>From backyard cottages to smart conversions, we build custom ADUs that fit your space, style, and budget.</p>
         </div>
 
-        <!-- Detached ADUs Category -->
-        <div class="services-category">
-            <div class="services-category-label">Detached ADUs</div>
-            <div class="services-scroll-container">
+        <div class="services-scroll-container">
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600&q=80" alt="Modern backyard cottage ADU">
                         <div class="service-image-overlay"></div>
-                        <span class="service-badge">Popular</span>
+                        <span class="service-badge">Detached</span>
                     </div>
                     <div class="service-content">
                         <h3>Backyard Cottage</h3>
-                        <p>Classic standalone cottage design with timeless appeal. Perfect for rental income or guest accommodations.</p>
-                        <ul class="service-features">
-                            <li>400-900 sq ft layouts</li>
-                            <li>Full kitchen & bath</li>
-                            <li>Private entrance</li>
-                        </ul>
+                        <p>Classic standalone cottage design. Perfect for rental income or guest accommodations.</p>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2838,15 +2821,11 @@
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80" alt="Modern tiny home ADU">
                         <div class="service-image-overlay"></div>
+                        <span class="service-badge">Detached</span>
                     </div>
                     <div class="service-content">
                         <h3>Modern Tiny Home</h3>
-                        <p>Contemporary design with clean lines and efficient use of space. Ideal for minimalist living or home office.</p>
-                        <ul class="service-features">
-                            <li>200-500 sq ft</li>
-                            <li>Open floor plan</li>
-                            <li>Energy efficient</li>
-                        </ul>
+                        <p>Contemporary design with clean lines. Ideal for minimalist living or home office.</p>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2861,15 +2840,11 @@
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Guest house ADU">
                         <div class="service-image-overlay"></div>
+                        <span class="service-badge">Detached</span>
                     </div>
                     <div class="service-content">
                         <h3>Guest House</h3>
-                        <p>Spacious standalone unit with premium finishes. Perfect for extended family visits or long-term rentals.</p>
-                        <ul class="service-features">
-                            <li>600-900 sq ft</li>
-                            <li>1-2 bedrooms</li>
-                            <li>Premium finishes</li>
-                        </ul>
+                        <p>Spacious standalone unit with premium finishes for family or long-term rentals.</p>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2879,29 +2854,16 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            </div>
-        </div>
 
-        <!-- Attached ADUs Category -->
-        <div class="services-category">
-            <div class="services-category-label">Attached ADUs</div>
-            <div class="services-scroll-container">
-            <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="In-law suite addition">
                         <div class="service-image-overlay"></div>
-                        <span class="service-badge">Family Favorite</span>
+                        <span class="service-badge">Attached</span>
                     </div>
                     <div class="service-content">
                         <h3>In-Law Suite</h3>
-                        <p>Connected living space for aging parents or adult children. Maintains family closeness with independent living.</p>
-                        <ul class="service-features">
-                            <li>Attached to main home</li>
-                            <li>Accessible design options</li>
-                            <li>Shared or separate entry</li>
-                        </ul>
+                        <p>Connected living space for family. Maintains closeness with independent living.</p>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2916,15 +2878,11 @@
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Home addition ADU">
                         <div class="service-image-overlay"></div>
+                        <span class="service-badge">Attached</span>
                     </div>
                     <div class="service-content">
                         <h3>Home Addition</h3>
-                        <p>Seamless expansion of your existing home. Adds living space while increasing property value.</p>
-                        <ul class="service-features">
-                            <li>Bump-out or second story</li>
-                            <li>Matches existing style</li>
-                            <li>Integrated utilities</li>
-                        </ul>
+                        <p>Seamless expansion of your existing home while increasing property value.</p>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2934,29 +2892,16 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            </div>
-        </div>
 
-        <!-- Conversions Category -->
-        <div class="services-category">
-            <div class="services-category-label">Conversions</div>
-            <div class="services-scroll-container">
-            <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Garage conversion ADU">
                         <div class="service-image-overlay"></div>
-                        <span class="service-badge">Best Value</span>
+                        <span class="service-badge">Conversion</span>
                     </div>
                     <div class="service-content">
                         <h3>Garage Conversion</h3>
-                        <p>Transform your underused garage into a beautiful living space. Most cost-effective ADU option.</p>
-                        <ul class="service-features">
-                            <li>Lower construction cost</li>
-                            <li>Faster build time</li>
-                            <li>Full insulation & HVAC</li>
-                        </ul>
+                        <p>Transform your underused garage into beautiful living space. Most cost-effective.</p>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2971,15 +2916,11 @@
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Basement apartment conversion">
                         <div class="service-image-overlay"></div>
+                        <span class="service-badge">Conversion</span>
                     </div>
                     <div class="service-content">
                         <h3>Basement Apartment</h3>
                         <p>Unlock hidden square footage beneath your home. No additional lot space required.</p>
-                        <ul class="service-features">
-                            <li>No lot space needed</li>
-                            <li>Natural temperature control</li>
-                            <li>Separate entrance</li>
-                        </ul>
                         <a href="#" class="service-link">
                             Explore Pricing & Floor Plans
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2989,7 +2930,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
