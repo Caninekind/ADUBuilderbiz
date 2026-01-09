@@ -2428,24 +2428,53 @@
                 font-size: 0.75rem;
             }
 
-            /* Process Mobile */
+            /* Process Mobile - Horizontal Scroll */
             .process {
-                padding: 4rem 5%;
+                padding: 4rem 0;
+            }
+
+            .process .section-header {
+                padding: 0 5%;
             }
 
             .process-steps {
-                gap: 1.5rem;
-                margin-top: 2.5rem;
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                gap: 1rem;
+                margin-top: 2rem;
+                padding: 0.5rem 5% 1.5rem;
+                scrollbar-width: none;
+            }
+            .process-steps::-webkit-scrollbar { display: none; }
+
+            .process-step {
+                flex: 0 0 260px;
+                scroll-snap-align: start;
+                background: var(--warm-cream);
+                padding: 1.5rem;
+                border-radius: 12px;
+                border: 1px solid var(--warm-beige);
+            }
+
+            .process-step::after {
+                display: none;
             }
 
             .step-number {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
             }
 
             .process-step h3 {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .process-step p {
+                font-size: 0.85rem;
             }
 
             /* Testimonials Mobile - Horizontal Scroll */
