@@ -1776,6 +1776,63 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 8%;
+            background: var(--warm-cream);
+        }
+        .faq-section h2 {
+            font-size: 1.75rem;
+            color: var(--forest-green);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--warm-beige);
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--deep-charcoal);
+            text-align: left;
+            transition: background 0.2s;
+        }
+        .faq-question:hover { background: rgba(0,0,0,0.02); }
+        .faq-question svg {
+            flex-shrink: 0;
+            transition: transform 0.2s;
+            color: var(--autumn-rust);
+        }
+        .faq-item.active .faq-question svg { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer p {
+            padding: 0 1.25rem 1rem;
+            font-size: 0.9rem;
+            color: var(--warm-wood);
+            line-height: 1.6;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; }
+
         /* Newsletter Section */
         .newsletter {
             padding: 5rem 8%;
@@ -3174,6 +3231,48 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    How long does it take to build an ADU?
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><p>Placeholder answer text.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is the new Massachusetts ADU law?
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><p>Placeholder answer text.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    How much does an ADU cost to build?
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><p>Placeholder answer text.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do I need a permit for my ADU?
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><p>Placeholder answer text.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I rent out my ADU?
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><p>Placeholder answer text.</p></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section class="newsletter">
         <div class="newsletter-content">
@@ -3274,6 +3373,14 @@
             // Initial state
             updateArrows();
         })();
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                item.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
