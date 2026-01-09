@@ -195,6 +195,7 @@
             margin-bottom: 0.75rem;
             font-size: 0.75rem;
             color: var(--warm-wood);
+            display: none; /* Hide on desktop */
         }
         .scroll-hint span { animation: bounceRight 1.5s infinite; }
         @keyframes bounceRight {
@@ -465,6 +466,7 @@
             .category-header { flex-direction: column; align-items: flex-start; }
             .quick-stats { gap: 1.5rem; flex-wrap: wrap; }
             .category-cta { flex-direction: column; text-align: center; }
+            .scroll-hint { display: flex; }
         }
     </style>
 </head>
