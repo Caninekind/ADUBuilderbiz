@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Plans & Pricing | ADU Builder Massachusetts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-cream: #FAF7F2;
+            --autumn-rust: #B5503C;
+            --forest-green: #2D4A3E;
+            --warm-wood: #8B6C5C;
+            --deep-charcoal: #2C2825;
+            --golden-amber: #D4A853;
+            --soft-sage: #9CAF94;
+            --warm-beige: #E8DFD4;
+            --copper: #C67D4E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--warm-cream);
+            color: var(--deep-charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(250, 247, 242, 0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 108, 92, 0.18);
+        }
+
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--deep-charcoal); font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--autumn-rust); }
+
+        .nav-cta {
+            background: var(--autumn-rust);
+            color: white !important;
+            padding: 0.7rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            position: sticky;
+            top: 70px;
+            background: white;
+            z-index: 90;
+            padding: 1rem 5%;
+            border-bottom: 1px solid rgba(139, 108, 92, 0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .category-nav::-webkit-scrollbar { display: none; }
+
+        .category-nav a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            text-decoration: none;
+            color: var(--warm-wood);
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        .category-nav a:hover, .category-nav a.active {
+            background: var(--autumn-rust);
+            color: white;
+        }
+
+        /* Hero */
+        .page-hero {
+            padding: 120px 8% 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--warm-cream) 0%, var(--warm-beige) 100%);
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--warm-wood);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Category Section */
+        .category-section {
+            padding: 4rem 8%;
+            border-bottom: 1px solid var(--warm-beige);
+            scroll-margin-top: 130px;
+        }
+        .category-section:nth-child(even) { background: white; }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .category-header h2 {
+            font-size: 2rem;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+        }
+        .category-header p {
+            color: var(--warm-wood);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Floor Plans Grid */
+        .floor-plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .floor-plan-card {
+            background: var(--warm-cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(139, 108, 92, 0.1);
+        }
+        .floor-plan-card h3 {
+            font-size: 1.2rem;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+        }
+        .floor-plan-card .size {
+            font-size: 0.9rem;
+            color: var(--autumn-rust);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .floor-plan-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .floor-plan-card li {
+            font-size: 0.85rem;
+            color: var(--warm-wood);
+            padding: 0.25rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .floor-plan-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--soft-sage);
+        }
+        .price-placeholder {
+            background: var(--warm-beige);
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--warm-wood);
+        }
+
+        /* Gallery */
+        .gallery-section { margin: 2rem 0; }
+        .gallery-section h3 {
+            font-size: 1.1rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+        .gallery-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scrollbar-width: thin;
+        }
+        .gallery-scroll img {
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        /* CTA Button */
+        .category-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .btn-consultation {
+            display: inline-block;
+            background: var(--autumn-rust);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-consultation:hover {
+            background: #9a432f;
+            transform: translateY(-2px);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--forest-green);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .back-to-top.visible { opacity: 1; }
+
+        /* Footer */
+        footer {
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 2rem 8%;
+            text-align: center;
+        }
+        footer a { color: var(--golden-amber); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .category-section { padding: 3rem 5%; }
+            .floor-plans-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="https://i.imgur.com/Va1HB9D.jpeg" alt="ADU Builder"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#about">About</a>
+            <a href="tel:508-840-5994" class="nav-cta">Call Now</a>
+        </div>
+    </nav>
+
+    <div class="category-nav">
+        <a href="#backyard-cottage">Backyard Cottage</a>
+        <a href="#tiny-home">Tiny Home</a>
+        <a href="#guest-house">Guest House</a>
+        <a href="#in-law-suite">In-Law Suite</a>
+        <a href="#home-addition">Home Addition</a>
+        <a href="#garage-conversion">Garage Conversion</a>
+        <a href="#basement">Basement</a>
+        <a href="#above-garage">Above-Garage</a>
+        <a href="#attic">Attic</a>
+    </div>
+
+    <div class="page-hero">
+        <h1>ADU Floor Plans & Pricing</h1>
+        <p>Explore our most popular floor plans for every ADU type. Contact us for a personalized quote based on your property.</p>
+    </div>
+
+    <!-- Backyard Cottage -->
+    <section class="category-section" id="backyard-cottage">
+        <div class="category-header">
+            <h2>Backyard Cottage ADU</h2>
+            <p>Classic standalone cottage designs perfect for New England properties</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Cape Cod</h3>
+                <p class="size">400 sq ft • Studio</p>
+                <ul>
+                    <li>Open living/sleeping area</li>
+                    <li>Full kitchen with peninsula</li>
+                    <li>Full bathroom</li>
+                    <li>Front porch</li>
+                </ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Nantucket</h3>
+                <p class="size">550 sq ft • 1 Bedroom</p>
+                <ul>
+                    <li>Separate bedroom</li>
+                    <li>Full kitchen with island</li>
+                    <li>Washer/dryer closet</li>
+                    <li>Covered entry</li>
+                </ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Beacon Hill</h3>
+                <p class="size">750 sq ft • 2 Bedroom</p>
+                <ul>
+                    <li>Two bedrooms</li>
+                    <li>Full bath + powder room</li>
+                    <li>Open concept living</li>
+                    <li>Mudroom entry</li>
+                </ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=400&q=80" alt="Backyard cottage">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Small cottage">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Garden cottage">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Modern cottage">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Cottage exterior">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Cottage design">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Small home">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Cottage living">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="ADU cottage">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Guest cottage">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Backyard Cottage Consultation</a>
+        </div>
+    </section>
+
+    <!-- Tiny Home -->
+    <section class="category-section" id="tiny-home">
+        <div class="category-header">
+            <h2>Modern Tiny Home ADU</h2>
+            <p>Contemporary compact living with clean lines and smart design</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Minimalist</h3>
+                <p class="size">300 sq ft • Studio</p>
+                <ul><li>Efficient layout</li><li>Loft sleeping area</li><li>Compact kitchen</li><li>Full bath</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Urban</h3>
+                <p class="size">450 sq ft • 1 Bedroom</p>
+                <ul><li>Modern finishes</li><li>Built-in storage</li><li>Home office nook</li><li>Private patio</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&q=80" alt="Tiny home">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80" alt="Modern tiny">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Small modern">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=400&q=80" alt="Compact home">
+                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=400&q=80" alt="Tiny house">
+                <img src="https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=400&q=80" alt="Modern small">
+                <img src="https://images.unsplash.com/photo-1600573472591-ee6c563aaec3?w=400&q=80" alt="Tiny living">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Small house">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Mini home">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Tiny ADU">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Tiny Home Consultation</a>
+        </div>
+    </section>
+
+    <!-- Guest House -->
+    <section class="category-section" id="guest-house">
+        <div class="category-header">
+            <h2>Guest House ADU</h2>
+            <p>Spacious standalone units with premium finishes</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Wellesley</h3>
+                <p class="size">600 sq ft • 1 Bedroom</p>
+                <ul><li>Master suite</li><li>Gourmet kitchen</li><li>Living room</li><li>Deck access</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Brookline</h3>
+                <p class="size">850 sq ft • 2 Bedroom</p>
+                <ul><li>Two bedrooms</li><li>Full kitchen</li><li>1.5 bathrooms</li><li>Dining area</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80" alt="Guest house">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Guest cottage">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Luxury guest">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Guest suite">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Pool house">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Guest ADU">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Guest home">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Carriage house">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Guest quarters">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Guest living">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Guest House Consultation</a>
+        </div>
+    </section>
+
+    <!-- In-Law Suite -->
+    <section class="category-section" id="in-law-suite">
+        <div class="category-header">
+            <h2>In-Law Suite ADU</h2>
+            <p>Connected living spaces that keep family close</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Family Suite</h3>
+                <p class="size">500 sq ft • 1 Bedroom</p>
+                <ul><li>Private entrance</li><li>Accessible design</li><li>Kitchenette</li><li>Connected hallway option</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Independence</h3>
+                <p class="size">700 sq ft • 1 Bedroom</p>
+                <ul><li>Full kitchen</li><li>Separate living</li><li>Walk-in shower</li><li>Laundry</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="In-law suite">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Family suite">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Attached suite">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="In-law ADU">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Suite interior">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Mother-in-law">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Granny flat">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Attached ADU">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Suite design">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80" alt="In-law living">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person In-Law Suite Consultation</a>
+        </div>
+    </section>
+
+    <!-- Home Addition -->
+    <section class="category-section" id="home-addition">
+        <div class="category-header">
+            <h2>Home Addition ADU</h2>
+            <p>Seamless expansions that increase your property value</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Extension</h3>
+                <p class="size">400-600 sq ft</p>
+                <ul><li>Matches existing architecture</li><li>Flexible layout</li><li>Private entrance option</li><li>Full amenities</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Wing</h3>
+                <p class="size">600-900 sq ft</p>
+                <ul><li>2 bedroom option</li><li>Separate utilities</li><li>Full kitchen</li><li>Outdoor access</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Home addition">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="House extension">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Addition exterior">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Wing addition">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Home expansion">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Added space">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Extension design">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Home ADU">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Addition interior">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80" alt="Modern addition">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Home Addition Consultation</a>
+        </div>
+    </section>
+
+    <!-- Garage Conversion -->
+    <section class="category-section" id="garage-conversion">
+        <div class="category-header">
+            <h2>Garage Conversion ADU</h2>
+            <p>Transform underused space into beautiful living areas</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>Single Car Conversion</h3>
+                <p class="size">250-350 sq ft • Studio</p>
+                <ul><li>Efficient studio layout</li><li>Kitchenette</li><li>Full bathroom</li><li>Storage solutions</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>Two Car Conversion</h3>
+                <p class="size">400-500 sq ft • 1 Bedroom</p>
+                <ul><li>Separate bedroom</li><li>Full kitchen</li><li>Living area</li><li>Washer/dryer</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Garage conversion">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Converted garage">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Garage ADU">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Garage studio">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Conversion interior">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Garage apartment">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Converted space">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Garage living">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Garage home">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Studio conversion">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Garage Conversion Consultation</a>
+        </div>
+    </section>
+
+    <!-- Basement -->
+    <section class="category-section" id="basement">
+        <div class="category-header">
+            <h2>Basement Apartment ADU</h2>
+            <p>Unlock hidden square footage beneath your home</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Garden Level</h3>
+                <p class="size">500-700 sq ft • 1 Bedroom</p>
+                <ul><li>Egress windows</li><li>Full kitchen</li><li>Private entrance</li><li>Natural light design</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Walkout</h3>
+                <p class="size">700-1000 sq ft • 2 Bedroom</p>
+                <ul><li>Walk-out access</li><li>Two bedrooms</li><li>Full amenities</li><li>Patio space</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80" alt="Basement apartment">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Basement living">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Lower level">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Basement ADU">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Garden apartment">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Basement design">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Lower unit">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Basement suite">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Walkout basement">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Basement home">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Basement Consultation</a>
+        </div>
+    </section>
+
+    <!-- Above-Garage -->
+    <section class="category-section" id="above-garage">
+        <div class="category-header">
+            <h2>Above-Garage ADU</h2>
+            <p>Build up, not out - maximize your vertical space</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Carriage House</h3>
+                <p class="size">400-500 sq ft • Studio/1BR</p>
+                <ul><li>Over 2-car garage</li><li>Private stair entry</li><li>Open floor plan</li><li>Keep your parking</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Loft</h3>
+                <p class="size">500-700 sq ft • 1 Bedroom</p>
+                <ul><li>Vaulted ceilings</li><li>Full kitchen</li><li>Deck/balcony</li><li>Separate utilities</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1623298317883-6b70254edf31?w=400&q=80" alt="Above garage">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Garage apartment">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Carriage house">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Garage loft">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Over garage">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Garage suite">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Second story">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Garage ADU">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Above garage living">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80" alt="Carriage ADU">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Above-Garage Consultation</a>
+        </div>
+    </section>
+
+    <!-- Attic -->
+    <section class="category-section" id="attic">
+        <div class="category-header">
+            <h2>Attic ADU</h2>
+            <p>Transform unused attic space into cozy living quarters</p>
+        </div>
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <h3>The Dormer Suite</h3>
+                <p class="size">350-500 sq ft • Studio</p>
+                <ul><li>Dormer windows</li><li>Sloped ceiling charm</li><li>Kitchenette</li><li>Built-in storage</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+            <div class="floor-plan-card">
+                <h3>The Mansard</h3>
+                <p class="size">500-700 sq ft • 1 Bedroom</p>
+                <ul><li>Full headroom design</li><li>Separate bedroom</li><li>Skylights</li><li>Private stair entry</li></ul>
+                <div class="price-placeholder">Contact for pricing</div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3>Inspiration Gallery</h3>
+            <div class="gallery-scroll">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80" alt="Attic conversion">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Attic apartment">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Loft space">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Attic ADU">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Dormer room">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400&q=80" alt="Attic living">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Top floor">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="Attic suite">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Converted attic">
+                <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Attic bedroom">
+            </div>
+        </div>
+        <div class="category-cta">
+            <a href="tel:508-840-5994" class="btn-consultation">Book Your In-Person Attic Consultation</a>
+        </div>
+    </section>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <footer>
+        <p>© 2025 ADU Builder. Serving Boston & All of Massachusetts. <a href="tel:508-840-5994">508-840-5994</a></p>
+    </footer>
+
+    <script>
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Highlight active category in nav
+        const sections = document.querySelectorAll('.category-section');
+        const navLinks = document.querySelectorAll('.category-nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
