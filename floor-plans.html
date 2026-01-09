@@ -60,23 +60,25 @@
             font-size: 0.85rem;
         }
 
-        /* Category Navigation - Redesigned */
+        /* Category Navigation - Button Style */
         .category-nav {
             position: sticky;
             top: 65px;
-            background: var(--forest-green);
+            background: white;
             z-index: 90;
-            padding: 0;
+            padding: 1rem 2%;
             display: flex;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-bottom: 1px solid var(--warm-beige);
         }
 
         .category-nav-inner {
             display: flex;
+            gap: 0.5rem;
             overflow-x: auto;
             scrollbar-width: none;
-            padding: 0 1rem;
+            padding: 0.25rem;
             max-width: 1400px;
         }
         .category-nav-inner::-webkit-scrollbar { display: none; }
@@ -85,20 +87,26 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 1rem 1.25rem;
+            padding: 0.6rem 1rem;
             text-decoration: none;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.8rem;
-            font-weight: 500;
+            color: var(--forest-green);
+            font-size: 0.75rem;
+            font-weight: 600;
             white-space: nowrap;
-            border-bottom: 3px solid transparent;
+            border: 2px solid var(--warm-beige);
+            border-radius: 25px;
+            background: white;
             transition: all 0.2s;
         }
-        .category-nav a:hover { color: white; background: rgba(255,255,255,0.1); }
+        .category-nav a:hover {
+            border-color: var(--autumn-rust);
+            color: var(--autumn-rust);
+            background: rgba(181, 80, 60, 0.05);
+        }
         .category-nav a.active {
+            background: var(--autumn-rust);
             color: white;
-            border-bottom-color: var(--golden-amber);
-            background: rgba(255,255,255,0.05);
+            border-color: var(--autumn-rust);
         }
 
         /* Hero - Compact */
@@ -169,21 +177,46 @@
             letter-spacing: 0.05em;
         }
 
-        /* Floor Plans Grid - Card Redesign */
+        /* Floor Plans - Horizontal Scroll */
+        .floor-plans-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
         .floor-plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+            padding: 0.5rem 0 1rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+        .floor-plans-grid::-webkit-scrollbar { display: none; }
+
+        .scroll-hint {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--warm-wood);
+        }
+        .scroll-hint span { animation: bounceRight 1.5s infinite; }
+        @keyframes bounceRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
         }
 
         .floor-plan-card {
+            flex: 0 0 320px;
             background: white;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             border: 1px solid rgba(139, 108, 92, 0.08);
             transition: all 0.3s;
+            scroll-snap-align: start;
         }
         .floor-plan-card:hover {
             transform: translateY(-4px);
@@ -455,88 +488,85 @@
             </div>
             <span class="category-badge">Detached</span>
         </div>
-        <div class="floor-plans-grid">
-            <div class="floor-plan-card">
-                <div class="floorplan-images">
-                    <div class="floorplan-scroll">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Cape Cod Floor Plan">
-                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Cape Cod Interior">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="Cape Cod Exterior">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
+                <div class="floor-plan-card">
+                    <div class="floorplan-images">
+                        <div class="floorplan-scroll">
+                            <img src="https://cdn.prod.website-files.com/65ba5ae85ed7a1a3bf872a13/67ca2328a5aebddb6989e0c8_30x40%203%20Bedroom%20Floor%20Plan.webp" alt="Cape Cod Floor Plan">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Cape Cod Exterior">
+                            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Cape Cod Interior">
+                        </div>
                     </div>
-                    <div class="floorplan-dots"><span class="floorplan-dot active"></span><span class="floorplan-dot"></span><span class="floorplan-dot"></span></div>
-                </div>
-                <div class="floor-plan-content">
-                    <h3>The Cape Cod</h3>
-                    <div class="plan-meta">
-                        <span class="size">400 sq ft</span>
-                        <span>Studio</span>
-                        <span>1 Bath</span>
-                    </div>
-                    <div class="plan-features">
-                        <span class="plan-feature">Open Layout</span>
-                        <span class="plan-feature">Full Kitchen</span>
-                        <span class="plan-feature">Front Porch</span>
-                        <span class="plan-feature">Energy Efficient</span>
-                    </div>
-                    <div class="plan-pricing">
-                        <div class="price">Starting at $XX,XXX <span>/ turnkey</span></div>
-                        <a href="tel:508-840-5994" class="btn-details">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-            <div class="floor-plan-card">
-                <div class="floorplan-images">
-                    <div class="floorplan-scroll">
-                        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=500&q=80" alt="Nantucket Floor Plan">
-                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=500&q=80" alt="Nantucket Interior">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80" alt="Nantucket Exterior">
-                    </div>
-                    <div class="floorplan-dots"><span class="floorplan-dot active"></span><span class="floorplan-dot"></span><span class="floorplan-dot"></span></div>
-                </div>
-                <div class="floor-plan-content">
-                    <h3>The Nantucket</h3>
-                    <div class="plan-meta">
-                        <span class="size">550 sq ft</span>
-                        <span>1 Bed</span>
-                        <span>1 Bath</span>
-                    </div>
-                    <div class="plan-features">
-                        <span class="plan-feature">Separate Bedroom</span>
-                        <span class="plan-feature">Kitchen Island</span>
-                        <span class="plan-feature">W/D Hookup</span>
-                        <span class="plan-feature">Covered Entry</span>
-                    </div>
-                    <div class="plan-pricing">
-                        <div class="price">Starting at $XX,XXX <span>/ turnkey</span></div>
-                        <a href="tel:508-840-5994" class="btn-details">Get Quote</a>
+                    <div class="floor-plan-content">
+                        <h3>The Cape Cod</h3>
+                        <div class="plan-meta">
+                            <span class="size">400 sq ft</span>
+                            <span>Studio</span>
+                            <span>1 Bath</span>
+                        </div>
+                        <div class="plan-features">
+                            <span class="plan-feature">Open Layout</span>
+                            <span class="plan-feature">Full Kitchen</span>
+                            <span class="plan-feature">Front Porch</span>
+                        </div>
+                        <div class="plan-pricing">
+                            <div class="price">Starting at $XX,XXX</div>
+                            <a href="tel:508-840-5994" class="btn-details">Get Quote</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="floor-plan-card">
-                <div class="floorplan-images">
-                    <div class="floorplan-scroll">
-                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=500&q=80" alt="Beacon Hill Floor Plan">
-                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=500&q=80" alt="Beacon Hill Interior">
-                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=500&q=80" alt="Beacon Hill Exterior">
+                <div class="floor-plan-card">
+                    <div class="floorplan-images">
+                        <div class="floorplan-scroll">
+                            <img src="https://cdn.prod.website-files.com/65ba5ae85ed7a1a3bf872a13/67ca2328a5aebddb6989e0c8_30x40%203%20Bedroom%20Floor%20Plan.webp" alt="Nantucket Floor Plan">
+                            <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=500&q=80" alt="Nantucket Exterior">
+                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=500&q=80" alt="Nantucket Interior">
+                        </div>
                     </div>
-                    <div class="floorplan-dots"><span class="floorplan-dot active"></span><span class="floorplan-dot"></span><span class="floorplan-dot"></span></div>
+                    <div class="floor-plan-content">
+                        <h3>The Nantucket</h3>
+                        <div class="plan-meta">
+                            <span class="size">550 sq ft</span>
+                            <span>1 Bed</span>
+                            <span>1 Bath</span>
+                        </div>
+                        <div class="plan-features">
+                            <span class="plan-feature">Separate Bedroom</span>
+                            <span class="plan-feature">Kitchen Island</span>
+                            <span class="plan-feature">W/D Hookup</span>
+                        </div>
+                        <div class="plan-pricing">
+                            <div class="price">Starting at $XX,XXX</div>
+                            <a href="tel:508-840-5994" class="btn-details">Get Quote</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="floor-plan-content">
-                    <h3>The Beacon Hill</h3>
-                    <div class="plan-meta">
-                        <span class="size">750 sq ft</span>
-                        <span>2 Bed</span>
-                        <span>1.5 Bath</span>
+                <div class="floor-plan-card">
+                    <div class="floorplan-images">
+                        <div class="floorplan-scroll">
+                            <img src="https://cdn.prod.website-files.com/65ba5ae85ed7a1a3bf872a13/67ca2328a5aebddb6989e0c8_30x40%203%20Bedroom%20Floor%20Plan.webp" alt="Beacon Hill Floor Plan">
+                            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=500&q=80" alt="Beacon Hill Exterior">
+                            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=500&q=80" alt="Beacon Hill Interior">
+                        </div>
                     </div>
-                    <div class="plan-features">
-                        <span class="plan-feature">Two Bedrooms</span>
-                        <span class="plan-feature">Open Concept</span>
-                        <span class="plan-feature">Mudroom</span>
-                        <span class="plan-feature">Deck Ready</span>
-                    </div>
-                    <div class="plan-pricing">
-                        <div class="price">Starting at $XX,XXX <span>/ turnkey</span></div>
-                        <a href="tel:508-840-5994" class="btn-details">Get Quote</a>
+                    <div class="floor-plan-content">
+                        <h3>The Beacon Hill</h3>
+                        <div class="plan-meta">
+                            <span class="size">750 sq ft</span>
+                            <span>2 Bed</span>
+                            <span>1.5 Bath</span>
+                        </div>
+                        <div class="plan-features">
+                            <span class="plan-feature">Two Bedrooms</span>
+                            <span class="plan-feature">Open Concept</span>
+                            <span class="plan-feature">Mudroom</span>
+                        </div>
+                        <div class="plan-pricing">
+                            <div class="price">Starting at $XX,XXX</div>
+                            <a href="tel:508-840-5994" class="btn-details">Get Quote</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -576,7 +606,9 @@
             </div>
             <span class="category-badge">Detached</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images">
                     <div class="floorplan-scroll">
@@ -647,7 +679,9 @@
             <div class="category-header-text"><h2>Guest House ADU</h2><p>Spacious standalone units with premium finishes</p></div>
             <span class="category-badge">Detached</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Wellesley"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
@@ -691,7 +725,9 @@
             <div class="category-header-text"><h2>In-Law Suite ADU</h2><p>Connected living spaces that keep family close</p></div>
             <span class="category-badge">Attached</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="Family Suite"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
@@ -735,7 +771,9 @@
             <div class="category-header-text"><h2>Home Addition ADU</h2><p>Seamless expansions that increase property value</p></div>
             <span class="category-badge">Attached</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="Extension"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
@@ -779,7 +817,9 @@
             <div class="category-header-text"><h2>Garage Conversion ADU</h2><p>Transform underused space into beautiful living areas</p></div>
             <span class="category-badge">Conversion</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Single Car"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
@@ -823,7 +863,9 @@
             <div class="category-header-text"><h2>Basement Apartment ADU</h2><p>Unlock hidden square footage beneath your home</p></div>
             <span class="category-badge">Conversion</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&q=80" alt="Garden Level"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
@@ -867,7 +909,9 @@
             <div class="category-header-text"><h2>Above-Garage ADU</h2><p>Build up, not out - maximize vertical space</p></div>
             <span class="category-badge">Attached</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1623298317883-6b70254edf31?w=500&q=80" alt="Carriage House"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
@@ -911,7 +955,9 @@
             <div class="category-header-text"><h2>Attic ADU</h2><p>Transform unused attic space into cozy living</p></div>
             <span class="category-badge">Conversion</span>
         </div>
-        <div class="floor-plans-grid">
+        <div class="floor-plans-wrapper">
+            <div class="scroll-hint">Scroll to see more plans <span>→</span></div>
+            <div class="floor-plans-grid">
             <div class="floor-plan-card">
                 <div class="floorplan-images"><div class="floorplan-scroll"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&q=80" alt="Dormer Suite"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80" alt="Interior"></div></div>
                 <div class="floor-plan-content">
