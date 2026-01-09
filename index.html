@@ -66,18 +66,23 @@
         }
 
         .logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--forest-green);
-            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 0.15em;
+            text-decoration: none;
         }
 
-        .logo span {
-            color: var(--autumn-rust);
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-logo img {
+            height: 70px;
+        }
+
+        .password-logo img {
+            height: 100px;
+            margin-bottom: 1rem;
         }
 
         .nav-links {
@@ -2608,7 +2613,7 @@
     <!-- Password Protection Overlay -->
     <div id="password-overlay" class="password-overlay">
         <div class="password-container">
-            <div class="logo">ADU<span>Builder</span></div>
+            <div class="logo password-logo"><img src="logo.png" alt="ADU Builder"></div>
             <h1>Under Construction</h1>
             <p class="redesign-message">
                 This website is currently going through a redesign.<br>
@@ -2624,7 +2629,7 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">ADU<span>Builder</span></div>
+        <a href="#" class="logo"><img src="logo.png" alt="ADU Builder - Accessory Dwelling Units"></a>
         <div class="mobile-nav-controls">
             <a href="tel:508-840-5994" class="mobile-cta">Book Consultation</a>
             <button class="mobile-nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('active')" aria-label="Toggle menu">
@@ -3245,7 +3250,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="logo">ADU<span>Builder</span></div>
+                <a href="#" class="logo footer-logo"><img src="logo.png" alt="ADU Builder"></a>
                 <p>Massachusetts' trusted ADU construction experts. We specialize in detached ADUs, garage conversions, and basement conversions — helping homeowners maximize their property potential under the new 2025 by-right law.</p>
             </div>
             
