@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Consultation | ADU Builder Massachusetts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-cream: #FAF7F2;
+            --autumn-rust: #B5503C;
+            --forest-green: #2D4A3E;
+            --warm-wood: #8B6C5C;
+            --deep-charcoal: #2C2825;
+            --golden-amber: #D4A853;
+            --soft-sage: #9CAF94;
+            --warm-beige: #E8DFD4;
+            --copper: #C67D4E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--warm-cream);
+            color: var(--deep-charcoal);
+            line-height: 1.6;
+        }
+
+        /* Grain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(250, 247, 242, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 108, 92, 0.18);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-charcoal);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        .nav-links a:not(.nav-cta):not(.nav-phone):hover { color: var(--autumn-rust); }
+        .nav-links a:not(.nav-cta):not(.nav-phone)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--autumn-rust);
+            transition: width 0.2s ease;
+        }
+        .nav-links a:not(.nav-cta):not(.nav-phone):hover::after { width: 100%; }
+
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--forest-green) !important;
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            border: 1.5px solid var(--forest-green);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+        .nav-phone:hover { background: var(--forest-green); color: white !important; }
+        .nav-phone::after { display: none !important; }
+
+        /* Mobile navigation */
+        .mobile-nav-controls { display: none; align-items: center; gap: 0.75rem; }
+        .mobile-nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .mobile-nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--deep-charcoal);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .mobile-cta {
+            background: var(--autumn-rust);
+            color: white;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(250, 247, 242, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+            border-bottom: 1px solid rgba(139, 108, 92, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 99;
+        }
+        .mobile-menu.active { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 0.9rem 0;
+            color: var(--deep-charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(139, 108, 92, 0.1);
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--autumn-rust); }
+        .mobile-menu .mobile-menu-cta {
+            display: block;
+            background: var(--autumn-rust);
+            color: white;
+            text-align: center;
+            padding: 0.9rem;
+            border-radius: 6px;
+            margin-top: 0.75rem;
+            font-weight: 600;
+            border-bottom: none;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 140px 8% 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--warm-cream) 0%, white 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 168, 83, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(45, 74, 62, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(45, 74, 62, 0.1);
+            color: var(--forest-green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--warm-wood);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            padding: 4rem 8%;
+            background: white;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Left Side - Info */
+        .booking-info {
+            position: sticky;
+            top: 100px;
+        }
+
+        .booking-info h2 {
+            font-size: 1.75rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .booking-info > p {
+            color: var(--warm-wood);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .consultation-types {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .consultation-type {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--warm-cream);
+            border-radius: 12px;
+            border: 1px solid var(--warm-beige);
+            transition: all 0.2s ease;
+        }
+
+        .consultation-type:hover {
+            border-color: var(--autumn-rust);
+            transform: translateX(4px);
+        }
+
+        .consultation-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--autumn-rust), #8a3d2e);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .consultation-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+
+        .consultation-icon.green {
+            background: linear-gradient(135deg, var(--forest-green), #1e3329);
+        }
+
+        .consultation-icon.gold {
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+        }
+
+        .consultation-details h3 {
+            font-size: 1rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .consultation-details p {
+            font-size: 0.85rem;
+            color: var(--warm-wood);
+            line-height: 1.5;
+        }
+
+        .consultation-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .consultation-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            color: var(--forest-green);
+            font-weight: 600;
+        }
+
+        .consultation-meta svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Trust indicators */
+        .trust-section {
+            background: linear-gradient(135deg, var(--forest-green), #1e3329);
+            padding: 1.5rem;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .trust-section h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            opacity: 0.95;
+        }
+
+        .trust-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--golden-amber);
+            flex-shrink: 0;
+        }
+
+        /* Right Side - Booking Widget */
+        .booking-widget-area {
+            background: var(--warm-cream);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--warm-beige);
+            min-height: 600px;
+        }
+
+        .booking-widget-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .booking-widget-header h3 {
+            font-size: 1.25rem;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .booking-widget-header p {
+            font-size: 0.9rem;
+            color: var(--warm-wood);
+        }
+
+        /* Booking Widget Placeholder */
+        .booking-widget-placeholder {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px dashed var(--warm-beige);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .widget-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(181, 80, 60, 0.1), rgba(212, 168, 83, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--autumn-rust);
+        }
+
+        .booking-widget-placeholder h4 {
+            font-size: 1.1rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .booking-widget-placeholder p {
+            font-size: 0.9rem;
+            color: var(--warm-wood);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .widget-note {
+            background: rgba(45, 74, 62, 0.08);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--forest-green);
+            max-width: 320px;
+        }
+
+        /* Alternative Contact */
+        .alternative-contact {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--warm-beige);
+            text-align: center;
+        }
+
+        .alternative-contact p {
+            font-size: 0.9rem;
+            color: var(--warm-wood);
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .contact-btn.primary {
+            background: var(--autumn-rust);
+            color: white;
+            box-shadow: 0 2px 8px rgba(181, 80, 60, 0.25);
+        }
+
+        .contact-btn.primary:hover {
+            background: #9a432f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(181, 80, 60, 0.35);
+        }
+
+        .contact-btn.secondary {
+            background: white;
+            color: var(--forest-green);
+            border: 1.5px solid var(--forest-green);
+        }
+
+        .contact-btn.secondary:hover {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .contact-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* What to Expect Section */
+        .expect-section {
+            padding: 5rem 8%;
+            background: var(--warm-cream);
+        }
+
+        .expect-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .expect-header h2 {
+            font-size: 1.75rem;
+            color: var(--forest-green);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .expect-header p {
+            font-size: 1rem;
+            color: var(--warm-wood);
+        }
+
+        .expect-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .expect-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .expect-item::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            right: -1rem;
+            width: calc(100% - 70px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--golden-amber), var(--autumn-rust));
+        }
+
+        .expect-item:last-child::after {
+            display: none;
+        }
+
+        .expect-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--golden-amber), var(--copper));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .expect-item h3 {
+            font-size: 1rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .expect-item p {
+            font-size: 0.85rem;
+            color: var(--warm-wood);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 8%;
+            background: linear-gradient(135deg, var(--autumn-rust) 0%, #8a3d2e 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .cta-phone-large {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cta-phone-large a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .cta-phone-large a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--autumn-rust);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .cta-btn:hover {
+            background: var(--golden-amber);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-charcoal);
+            color: white;
+            padding: 3rem 8% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+        }
+
+        .footer-heading {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--golden-amber);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .booking-info {
+                position: static;
+            }
+
+            .expect-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .expect-item::after {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-nav-controls { display: flex; }
+            .mobile-nav-toggle { display: flex; }
+
+            .page-hero {
+                padding: 120px 5% 40px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .booking-section {
+                padding: 2.5rem 5%;
+            }
+
+            .booking-widget-area {
+                padding: 1.5rem;
+            }
+
+            .consultation-type {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .consultation-icon {
+                margin: 0 auto;
+            }
+
+            .consultation-meta {
+                justify-content: center;
+            }
+
+            .expect-section {
+                padding: 3.5rem 5%;
+            }
+
+            .expect-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .expect-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .cta-section {
+                padding: 3.5rem 5%;
+            }
+
+            .cta-phone-large {
+                font-size: 1.5rem;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 2.5rem 5% 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .booking-info h2 {
+                font-size: 1.4rem;
+            }
+
+            .expect-header h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo"><img src="https://i.imgur.com/Va1HB9D.jpeg" alt="ADU Builder"></a>
+        <div class="mobile-nav-controls">
+            <a href="tel:508-840-5994" class="mobile-cta">Call Now</a>
+            <button class="mobile-nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('active')" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="floor-plans.html">Floor Plans</a>
+            <a href="index.html#about">About</a>
+            <a href="tel:508-840-5994" class="nav-phone">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                508-840-5994
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" onclick="document.getElementById('mobileMenu').classList.remove('active')">Home</a>
+        <a href="index.html#services" onclick="document.getElementById('mobileMenu').classList.remove('active')">Services</a>
+        <a href="floor-plans.html" onclick="document.getElementById('mobileMenu').classList.remove('active')">Floor Plans</a>
+        <a href="index.html#about" onclick="document.getElementById('mobileMenu').classList.remove('active')">About</a>
+        <a href="tel:508-840-5994" class="mobile-menu-cta">Call 508-840-5994</a>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Free Consultation
+        </div>
+        <h1>Schedule Your ADU Consultation</h1>
+        <p>Take the first step toward your dream ADU. Book a free consultation with Ronnie to discuss your project, explore options, and get a personalized quote.</p>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <!-- Left Side - Info -->
+            <div class="booking-info">
+                <h2>Choose Your Consultation Type</h2>
+                <p>Whether you prefer a phone call, video chat, or in-person site visit, we're flexible to meet your needs. All consultations are completely free with no obligation.</p>
+
+                <div class="consultation-types">
+                    <div class="consultation-type">
+                        <div class="consultation-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="consultation-details">
+                            <h3>Phone Consultation</h3>
+                            <p>Quick discussion about your ADU goals, property eligibility, and budget considerations.</p>
+                            <div class="consultation-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    15-30 min
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                    Free
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="consultation-type">
+                        <div class="consultation-icon green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 7l-7 5 7 5V7z"/>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                            </svg>
+                        </div>
+                        <div class="consultation-details">
+                            <h3>Video Consultation</h3>
+                            <p>Virtual meeting to review your property photos, discuss designs, and explore floor plan options.</p>
+                            <div class="consultation-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    30-45 min
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                    Free
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="consultation-type">
+                        <div class="consultation-icon gold">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="consultation-details">
+                            <h3>In-Person Site Visit</h3>
+                            <p>Ronnie visits your property to assess the space, discuss placement options, and provide accurate estimates.</p>
+                            <div class="consultation-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    45-60 min
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                    Free
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trust-section">
+                    <h4>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                        Why Book With Us
+                    </h4>
+                    <div class="trust-items">
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>30+ years of New England construction experience</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>MA Licensed CSL & HIC Certified contractor</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>5.0 star rating on Google Reviews</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>No salespeople - work directly with Ronnie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Booking Widget -->
+            <div class="booking-widget-area">
+                <div class="booking-widget-header">
+                    <h3>Select a Date & Time</h3>
+                    <p>Choose a convenient time slot for your free consultation</p>
+                </div>
+
+                <!-- Placeholder for Wix Bookings Widget -->
+                <div class="booking-widget-placeholder">
+                    <div class="widget-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                            <path d="M8 14h.01"/>
+                            <path d="M12 14h.01"/>
+                            <path d="M16 14h.01"/>
+                            <path d="M8 18h.01"/>
+                            <path d="M12 18h.01"/>
+                        </svg>
+                    </div>
+                    <h4>Online Booking Coming Soon</h4>
+                    <p>Our online scheduling system is being set up. In the meantime, please call or email us to book your consultation.</p>
+                    <div class="widget-note">
+                        <strong>Note for site owner:</strong> Replace this placeholder with your Wix Bookings embed code when ready.
+                    </div>
+                </div>
+
+                <!-- Alternative Contact Options -->
+                <div class="alternative-contact">
+                    <p>Prefer to reach out directly?</p>
+                    <div class="contact-methods">
+                        <a href="tel:508-840-5994" class="contact-btn primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Call 508-840-5994
+                        </a>
+                        <a href="mailto:armanypartner@gmail.com" class="contact-btn secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Send Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect Section -->
+    <section class="expect-section">
+        <div class="expect-header">
+            <h2>What to Expect From Your Consultation</h2>
+            <p>Here's what we'll cover during your free consultation with Ronnie</p>
+        </div>
+
+        <div class="expect-grid">
+            <div class="expect-item">
+                <div class="expect-number">1</div>
+                <h3>Property Assessment</h3>
+                <p>We'll discuss your property's layout, lot size, and any zoning considerations under the new MA ADU law.</p>
+            </div>
+
+            <div class="expect-item">
+                <div class="expect-number">2</div>
+                <h3>Design Options</h3>
+                <p>Explore different ADU types that suit your needs - from backyard cottages to garage conversions.</p>
+            </div>
+
+            <div class="expect-item">
+                <div class="expect-number">3</div>
+                <h3>Budget Planning</h3>
+                <p>Get a realistic estimate based on your goals and learn about financing options available to you.</p>
+            </div>
+
+            <div class="expect-item">
+                <div class="expect-number">4</div>
+                <h3>Timeline Overview</h3>
+                <p>Understand the typical project timeline and what to expect at each phase of construction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Questions Before Booking?</h2>
+        <p>Feel free to call Ronnie directly. No pressure, just honest answers about your ADU project.</p>
+        <div class="cta-phone-large">
+            <a href="tel:508-840-5994">508-840-5994</a>
+        </div>
+        <a href="index.html" class="cta-btn">
+            Back to Homepage
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo"><img src="https://i.imgur.com/Va1HB9D.jpeg" alt="ADU Builder"></a>
+                <p>Massachusetts' trusted ADU construction experts. We specialize in detached ADUs, garage conversions, and basement conversions.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">Services</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#services">Detached ADUs</a></li>
+                    <li><a href="index.html#services">Garage Conversions</a></li>
+                    <li><a href="index.html#services">Basement Conversions</a></li>
+                    <li><a href="floor-plans.html">Floor Plans</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#process">Our Process</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section footer-contact">
+                <h4 class="footer-heading">Contact Ron</h4>
+                <p><a href="tel:508-840-5994">508-840-5994</a></p>
+                <p><a href="mailto:armanypartner@gmail.com">armanypartner@gmail.com</a></p>
+                <p>Serving Boston & All of Massachusetts</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 ADU Builder. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
